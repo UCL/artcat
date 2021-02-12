@@ -1,0 +1,1095 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\ado\ian\artcat\test_artcat.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 9 Dec 2020, 12:43:21
+{txt}
+{com}. 
+. * test_artcat.do
+. set type float
+{txt}
+{com}. prog drop _all
+{txt}
+{com}. 
+. /* SETTING 1 */
+. 
+. * rr vs pe
+. artcat, pc(.2 .4 .6) rr(.5) power(.9) probtable cum noround worst
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .4 .6 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by risk ratio = .5
+{txt}Expected average odds ratio{col 39}{res}.3205272
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  70.0
+
+{txt}Total sample size (calculated):{res}{col 39}123.1
+{txt}{hline 78}
+
+{com}. local n1 = r(n_ologit_NA)
+{txt}
+{com}. 
+. * format of pc
+. artcat, pc(.2, .4, .6) rr(.5) power(.9) probtable cum noround worst
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .4 .6 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by risk ratio = .5
+{txt}Expected average odds ratio{col 39}{res}.3205272
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  70.0
+
+{txt}Total sample size (calculated):{res}{col 39}123.1
+{txt}{hline 78}
+
+{com}. assert reldif(r(n_ologit_NA),`n1')<1E-6
+{txt}
+{com}. 
+. artcat, pc(.2 .2 .2) rr(.5) power(.9) probtable  noround worst
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .2 .2
+{txt}{col 1}                   experimental arm {res}{col 39}given by risk ratio = .5
+{txt}Expected average odds ratio{col 39}{res}.3205272
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  70.0
+
+{txt}Total sample size (calculated):{res}{col 39}123.1
+{txt}{hline 78}
+
+{com}. assert reldif(r(n_ologit_NA),`n1')<1E-6
+{txt}
+{com}. 
+. * format of pe
+. artcat, pc(.2 .4 .6) pe(.1 .2 .3) power(.9) probtable cum noround worst
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .4 .6 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}.1 .2 .3 (cumulative)
+{txt}Expected average odds ratio{col 39}{res}.3205272
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  70.0
+
+{txt}Total sample size (calculated):{res}{col 39}123.1
+{txt}{hline 78}
+
+{com}. assert reldif(r(n_ologit_NA),`n1')<1E-6
+{txt}
+{com}. 
+. artcat, pc(.2 .2 .2) pe(.1 .1 .1) power(.9) probtable noround worst
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .2 .2
+{txt}{col 1}                   experimental arm {res}{col 39}.1 .1 .1
+{txt}Expected average odds ratio{col 39}{res}.3205272
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  70.0
+
+{txt}Total sample size (calculated):{res}{col 39}123.1
+{txt}{hline 78}
+
+{com}. assert reldif(r(n_ologit_NA),`n1')<1E-6
+{txt}
+{com}. 
+. * extra row
+. artcat, pc(.2 .2 .2 .4) pe(.1 .1 .1 .7) power(.9) probtable noround worst
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .2 .2 .4
+{txt}{col 1}                   experimental arm {res}{col 39}.1 .1 .1 .7
+{txt}Expected average odds ratio{col 39}{res}.3205272
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  70.0
+
+{txt}Total sample size (calculated):{res}{col 39}123.1
+{txt}{hline 78}
+
+{com}. assert reldif(r(n_ologit_NA),`n1')<1E-6
+{txt}
+{com}. 
+. * extra row and rr
+. artcat, pc(.2 .2 .2 .4) rr(.5) power(.9) probtable noround worst
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .2 .2 .4
+{txt}{col 1}                   experimental arm {res}{col 39}given by risk ratio = .5
+{txt}Expected average odds ratio{col 39}{res}.3205272
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  70.0
+
+{txt}Total sample size (calculated):{res}{col 39}123.1
+{txt}{hline 78}
+
+{com}. assert reldif(r(n_ologit_NA),`n1')<1E-6
+{txt}
+{com}. 
+. * check it also works with type double (this one previously failed)
+. set type double
+{txt}
+{com}. artcat, pc(.2 .2 .2 .4) pe(.1 .1 .1 .7) power(.9) probtable noround worst
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .2 .2 .4
+{txt}{col 1}                   experimental arm {res}{col 39}.1 .1 .1 .7
+{txt}Expected average odds ratio{col 39}{res}.3205272
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  70.0
+
+{txt}Total sample size (calculated):{res}{col 39}123.1
+{txt}{hline 78}
+
+{com}. assert reldif(r(n_ologit_NA),`n1')<1E-6
+{txt}
+{com}. set type float
+{txt}
+{com}. 
+. * n to power to n
+. foreach method in NN NA AA {c -(}
+{txt}  2{com}.         artcat, pc(.2 .4 .6) rr(.5) n(200) probtable cum ologit(`method') noround worst
+{txt}  3{com}.         local power = r(power)
+{txt}  4{com}.         artcat, pc(.2 .4 .6) rr(.5) power(`power') probtable cum ologit(`method') noround worst
+{txt}  5{com}.         assert reldif(r(n),200)<1E-6
+{txt}  6{com}. {c )-}
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .4 .6 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by risk ratio = .5
+{txt}Expected average odds ratio{col 39}{res}.3205272
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Total sample size (designed){res}{col 39}200
+{txt}{col 1}Method{res}{col 39}ologit (variance NN)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  70.0
+
+{txt}Power (calculated):{res}{col 39}0.988
+{txt}{hline 78}
+
+{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .4 .6 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by risk ratio = .5
+{txt}Expected average odds ratio{col 39}{res}.3205272
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.98794055
+{txt}{col 1}Method{res}{col 39}ologit (variance NN)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  70.0
+
+{txt}Total sample size (calculated):{res}{col 39}200.0
+{txt}{hline 78}
+
+{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .4 .6 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by risk ratio = .5
+{txt}Expected average odds ratio{col 39}{res}.3205272
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Total sample size (designed){res}{col 39}200
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  70.0
+
+{txt}Power (calculated):{res}{col 39}0.984
+{txt}{hline 78}
+
+{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .4 .6 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by risk ratio = .5
+{txt}Expected average odds ratio{col 39}{res}.3205272
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.98404064
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  70.0
+
+{txt}Total sample size (calculated):{res}{col 39}200.0
+{txt}{hline 78}
+
+{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .4 .6 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by risk ratio = .5
+{txt}Expected average odds ratio{col 39}{res}.3205272
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Total sample size (designed){res}{col 39}200
+{txt}{col 1}Method{res}{col 39}ologit (variance AA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  70.0
+
+{txt}Power (calculated):{res}{col 39}0.980
+{txt}{hline 78}
+
+{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .4 .6 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by risk ratio = .5
+{txt}Expected average odds ratio{col 39}{res}.3205272
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9798178
+{txt}{col 1}Method{res}{col 39}ologit (variance AA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  70.0
+
+{txt}Total sample size (calculated):{res}{col 39}200.0
+{txt}{hline 78}
+
+{com}. 
+. * rr as expression
+. artcat, pc(.2 .4 .6) rr(1/2) power(.9) probtable cum noround worst
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .4 .6 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by risk ratio = .5
+{txt}Expected average odds ratio{col 39}{res}.3205272
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  70.0
+
+{txt}Total sample size (calculated):{res}{col 39}123.1
+{txt}{hline 78}
+
+{com}. assert reldif(r(n_ologit_NA),`n1')<1E-6
+{txt}
+{com}. 
+. * affected by aratio
+. artcat, pc(.2 .4 .6) rr(.5) power(.9) probtable cum aratio(2 1) noround worst
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}2:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .4 .6 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by risk ratio = .5
+{txt}Expected average odds ratio{col 39}{res}.3151326
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  70.0
+
+{txt}Total sample size (calculated):{res}{col 39}134.2
+{txt}{hline 78}
+
+{com}. assert r(n_ologit_NA) > `n1'
+{txt}
+{com}. 
+. * NI
+. artcat, pc(.2 .4 .6) rr(.5) margin(1) power(.9) probtable cum noround worst
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .4 .6 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by risk ratio = .5
+{txt}Expected average odds ratio{col 39}{res}.3205272
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  70.0
+
+{txt}Total sample size (calculated):{res}{col 39}123.1
+{txt}{hline 78}
+
+{com}. assert r(n_ologit_NA) == `n1'
+{txt}
+{com}. 
+. artcat, pc(.2 .4 .6) rr(.5) margin(1.1) power(.9) probtable cum noround worst
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Non-inferiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1.1
+{txt}{col 1}Non-inferiority region{res}{col 39}odds ratio < 1.1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .4 .6 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by risk ratio = .5
+{txt}Expected average odds ratio{col 39}{res}.3205272
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %{col 62}pe null %
+{col 39}worst{res}{col 46}  20.0{col 54}  10.0{col 65}  21.6
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  10.0{col 65}  20.7
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  10.0{col 65}  20.0
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  70.0{col 65}  37.7
+
+{txt}Total sample size (calculated):{res}{col 39}104.9
+{txt}{hline 78}
+
+{com}. assert r(n_ologit_NA) < `n1'
+{txt}
+{com}. 
+. * NI defaults to or(1)
+. artcat, pc(.2 .4 .6) rr(1) margin(1.5) power(.9) probtable cum noround worst
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Non-inferiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1.5
+{txt}{col 1}Non-inferiority region{res}{col 39}odds ratio < 1.5
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .4 .6 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by risk ratio = 1
+{txt}Expected average odds ratio{col 39}{res}1
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %{col 62}pe null %
+{col 39}worst{res}{col 46}  20.0{col 54}  20.0{col 65}  27.3
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  20.0{col 65}  22.7
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  20.0{col 65}  19.2
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  40.0{col 65}  30.8
+
+{txt}Total sample size (calculated):{res}{col 39}846.4
+{txt}{hline 78}
+
+{com}. local nNI = r(n)
+{txt}
+{com}. artcat, pc(.2 .4 .6) margin(1.5) power(.9) probtable cum noround worst
+{txt}Note: assuming expected odds ratio = 1
+
+{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Non-inferiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1.5
+{txt}{col 1}Non-inferiority region{res}{col 39}odds ratio < 1.5
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .4 .6 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by odds ratio = 1
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %{col 62}pe null %
+{col 39}worst{res}{col 46}  20.0{col 54}  20.0{col 65}  27.3
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  20.0{col 65}  22.7
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  20.0{col 65}  19.2
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  40.0{col 65}  30.8
+
+{txt}Total sample size (calculated):{res}{col 39}846.4
+{txt}{hline 78}
+
+{com}. assert reldif(r(n),`nNI')<1E-6
+{txt}
+{com}. 
+. * options
+. artcat, pc(.2 .4 .6) rr(.5) power(.9) probformat(%7.3f) format(%10.4f) alpha(0.025) ///
+>         onesid cum noround worst
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .4 .6 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by risk ratio = .5
+{txt}Expected average odds ratio{col 39}{res}.3205272
+
+{txt}{col 1}Alpha{res}{col 39}.025 (one-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}   pc %{col 55}   pe %
+{col 39}worst{res}{col 46} 20.000{col 55} 10.000
+{txt}{col 39}2{res}{col 46} 20.000{col 55} 10.000
+{txt}{col 39}3{res}{col 46} 20.000{col 55} 10.000
+{txt}{col 39}best{res}{col 46} 40.000{col 55} 70.000
+
+{txt}Total sample size (calculated):{res}{col 39}123.1093
+{txt}{hline 78}
+
+{com}. assert r(n_ologit_NA) == `n1'
+{txt}
+{com}. 
+. * rounding
+. artcat, pc(.2 .4 .6) rr(.5) power(.9) cum worst
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .4 .6 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by risk ratio = .5
+{txt}Expected average odds ratio{col 39}{res}.3205272
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  10.0
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  70.0
+
+{txt}Total sample size (calculated):{res}{col 39}124
+{txt}{hline 78}
+
+{com}. assert r(n_ologit_NA) == ceil(`n1')
+{txt}
+{com}. assert r(n_ologit_NA) == ceil(r(n_ologit_NA))
+{txt}
+{com}. 
+. * whitehead = NN
+. artcat, pc(.2 .4 .6) or(.5) power(.9) probtable cum noround whitehead worst
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .4 .6 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by odds ratio = .5
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}Whitehead
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}  20.0{col 54}  11.1
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  13.9
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  17.9
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  57.1
+
+{txt}Total sample size (calculated):{res}{col 39}301.7
+{txt}{hline 78}
+
+{com}. local n2 = r(n)
+{txt}
+{com}. artcat, pc(.2 .4 .6) or(.5) power(.9) probtable cum noround ologit(NN) worst
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.2 .4 .6 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by odds ratio = .5
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NN)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}  20.0{col 54}  11.1
+{txt}{col 39}2{res}{col 46}  20.0{col 54}  13.9
+{txt}{col 39}3{res}{col 46}  20.0{col 54}  17.9
+{txt}{col 39}best{res}{col 46}  40.0{col 54}  57.1
+
+{txt}Total sample size (calculated):{res}{col 39}301.7
+{txt}{hline 78}
+
+{com}. assert reldif(r(n),`n2')<1E-6
+{txt}
+{com}. 
+. 
+. /* SETTING 2 */
+. 
+. * or vs pe
+. artcat, pc(.4) or(2.25) power(.9) probtable cum noround best
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio > 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.4 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by odds ratio = 2.25
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}best{res}{col 46}  40.0{col 54}  60.0
+{txt}{col 39}worst{res}{col 46}  60.0{col 54}  40.0
+
+{txt}Total sample size (calculated):{res}{col 39}259.8
+{txt}{hline 78}
+
+{com}. local n1 = r(n)
+{txt}
+{com}. 
+. artcat, pc(.4) pe(.6) power(.9) probtable cum noround best
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio > 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.4 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}.6 (cumulative)
+{txt}Expected average odds ratio{col 39}{res}2.25
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}best{res}{col 46}  40.0{col 54}  60.0
+{txt}{col 39}worst{res}{col 46}  60.0{col 54}  40.0
+
+{txt}Total sample size (calculated):{res}{col 39}259.8
+{txt}{hline 78}
+
+{com}. assert reldif(r(n),`n1')<1E-6
+{txt}
+{com}. 
+. artbin, pr(0.4 0.6) power(.9) distant(1)
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (binary version 1.1.1 05aug2016)
+{hline 78}
+A sample size program by Abdel Babiker, Patrick Royston & Friederike Barthel,
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Type of trial{col 40}{res}Superiority - binary outcome
+{txt}Statistical test assumed{col 40}{res}Unconditional comparison of 2
+{txt}{col 40}{res} binomial proportions
+{txt}Number of groups{col 40}{res}2
+{txt}Allocation ratio{col 40}{res}Equal group sizes
+
+{txt}Anticipated event probabilities{col 40}{res}0.400, 0.600
+
+{txt}Alpha{col 40}{res}0.050 (two-sided)
+{txt}Power (designed){col 40}{res}0.900
+
+{txt}Total sample size (calculated){col 40}{res}259
+{txt}Expected total number of events{col 40}{res}130
+{txt}{hline 78}
+
+{com}. local n0 = r(n)
+{txt}
+{com}. 
+. artcat, pc(.4) pe(.6) power(.9) probtable ologit best
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio > 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.4
+{txt}{col 1}                   experimental arm {res}{col 39}.6
+{txt}Expected average odds ratio{col 39}{res}2.25
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}best{res}{col 46}  40.0{col 54}  60.0
+{txt}{col 39}worst{res}{col 46}  60.0{col 54}  40.0
+
+{txt}Total sample size (calculated):{res}{col 39}260
+{txt}{hline 78}
+
+{com}. assert reldif(r(n_ologit_NN),`n0')<0.05
+{txt}
+{com}. 
+. /* SETTING 3: FLU-IVIG */
+. 
+. artcat, pc(.018 .036 .156 .141 .39) or(1/1.77) power(.8) probtable ologit worst
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.018 .036 .156 .141 .39
+{txt}{col 1}                   experimental arm {res}{col 39}given by odds ratio = .5649718
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.8
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}   1.8{col 54}   1.0
+{txt}{col 39}2{res}{col 46}   3.6{col 54}   2.1
+{txt}{col 39}3{res}{col 46}  15.6{col 54}   9.9
+{txt}{col 39}4{res}{col 46}  14.1{col 54}  10.3
+{txt}{col 39}5{res}{col 46}  39.0{col 54}  38.4
+{txt}{col 39}best{res}{col 46}  25.9{col 54}  38.2
+
+{txt}Total sample size (calculated):{res}{col 39}322
+{txt}{hline 78}
+
+{com}. assert r(n_ologit_NN) == 320
+{txt}
+{com}. 
+. * same the other way round, without and with last category
+. artcat, pc(.259 .390 .141 .156 .036) or(1.77) power(.8) probtable ologit b
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio > 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.259 .39 .141 .156 .036
+{txt}{col 1}                   experimental arm {res}{col 39}given by odds ratio = 1.77
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.8
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}best{res}{col 46}  25.9{col 54}  38.2
+{txt}{col 39}2{res}{col 46}  39.0{col 54}  38.4
+{txt}{col 39}3{res}{col 46}  14.1{col 54}  10.3
+{txt}{col 39}4{res}{col 46}  15.6{col 54}   9.9
+{txt}{col 39}5{res}{col 46}   3.6{col 54}   2.1
+{txt}{col 39}worst{res}{col 46}   1.8{col 54}   1.0
+
+{txt}Total sample size (calculated):{res}{col 39}322
+{txt}{hline 78}
+
+{com}. assert r(n_ologit_NN) == 320
+{txt}
+{com}. artcat, pc(.259 .390 .141 .156 .036 .018) or(1.77) power(.8) probtable ologit b
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio > 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.259 .39 .141 .156 .036 .018
+{txt}{col 1}                   experimental arm {res}{col 39}given by odds ratio = 1.77
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.8
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}best{res}{col 46}  25.9{col 54}  38.2
+{txt}{col 39}2{res}{col 46}  39.0{col 54}  38.4
+{txt}{col 39}3{res}{col 46}  14.1{col 54}  10.3
+{txt}{col 39}4{res}{col 46}  15.6{col 54}   9.9
+{txt}{col 39}5{res}{col 46}   3.6{col 54}   2.1
+{txt}{col 39}worst{res}{col 46}   1.8{col 54}   1.0
+
+{txt}Total sample size (calculated):{res}{col 39}322
+{txt}{hline 78}
+
+{com}. assert r(n_ologit_NN) == 320
+{txt}
+{com}. 
+. * check error message if best is wrongly specified
+. cap noi artcat, pc(.018 .036 .156 .141 .39) or(1/1.77) power(.8) probtable ologit best
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio > 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.018 .036 .156 .141 .39
+{txt}{col 1}                   experimental arm {res}{col 39}given by odds ratio = .5649718
+{err}artcat: or (.5649718) < margin (1) is incompatible with best option
+{txt}
+{com}. assert _rc==498
+{txt}
+{com}. 
+. * check warning if worst/best is not specified
+. artcat, pc(.018 .036 .156 .141 .39) or(1/1.77) power(.8) probtable ologit 
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 0.9 3dec2020)
+{hline 78}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.018 .036 .156 .141 .39
+{txt}{col 1}                   experimental arm {res}{col 39}given by odds ratio = .5649718
+
+{txt}{it:The program has inferred that the left-most outcome level is the worst.}
+{it:You can avoid seeing this message in future by specifying the {cmd:worst} option.}
+
+{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.8
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 46}  pc %{col 54}  pe %
+{col 39}worst{res}{col 46}   1.8{col 54}   1.0
+{txt}{col 39}2{res}{col 46}   3.6{col 54}   2.1
+{txt}{col 39}3{res}{col 46}  15.6{col 54}   9.9
+{txt}{col 39}4{res}{col 46}  14.1{col 54}  10.3
+{txt}{col 39}5{res}{col 46}  39.0{col 54}  38.4
+{txt}{col 39}best{res}{col 46}  25.9{col 54}  38.2
+
+{txt}Total sample size (calculated):{res}{col 39}322
+{txt}{hline 78}
+
+{com}. 
+. *** CONCLUSION: ARTCAT PASSED ALL TESTS ***
+. 
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\ado\ian\artcat\test_artcat.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 9 Dec 2020, 12:43:25
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

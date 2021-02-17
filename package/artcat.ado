@@ -1,7 +1,7 @@
 /* 
 *! v1.0.1 Ian White 17feb2021
 	Correct output formatting if power defaults
-*! v1.0.0 Ian White 12feb2021
+v1.0.0 Ian White 12feb2021
 	renamed v1.0.0 at SJ submission & repo publication
 v0.9.2 Ian White 5feb2021
 	defaults to power(0.8) - to match power and art

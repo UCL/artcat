@@ -1,4 +1,6 @@
 /* 
+*! v1.0.1 Ian White 17feb2021
+	Correct output formatting if power defaults
 *! v1.0.0 Ian White 12feb2021
 	renamed v1.0.0 at SJ submission & repo publication
 v0.9.2 Ian White 5feb2021
@@ -81,8 +83,8 @@ syntax, pc(numlist) [CUMulative /// control arm options
 	noPROBTable PROBFormat(string) FORMat(string) noRound noHEADer /// output options
 	debug clear RETVars /// undocumented options
 	]
-local version 1.0.0
-local date 12feb2021
+local version 1.0.1
+local date 17feb2021
 
 *** PARSE
 if !mi("`or'") {
@@ -103,8 +105,6 @@ if mi("`whitehead'`ologit'") local ologit NA
 if "`ologit'"=="ologit" local ologit NA
 if !inlist("`ologit'","","NN","NA","AA") exit498 ologit(`ologit') not allowed
 
-if mi("`format'") local format = cond(!mi("`power'"),cond(mi("`round'"),"%6.0f","%6.1f"),"%6.3f")
-if mi("`probformat'") local probformat %-5.1f // left-justified looks better in output table
 local nmethods = !mi("`pe'") + !mi("`or'") + !mi("`rr'")
 if `nmethods'==0 {
 	if `margin'!=1 {
@@ -121,6 +121,9 @@ if !mi("`n'") if `n'<=0 exit198 n must be greater than 0
 if `alpha'<=0 | `alpha'>=1 exit198 alpha must be between 0 and 1
 if mi("`or'") & !mi("`whitehead'") exit198 Whitehead method requires or
 if mi("`debug'") local qui qui
+
+if mi("`format'") local format = cond(!mi("`power'"),cond(mi("`round'"),"%6.0f","%6.1f"),"%6.3f")
+if mi("`probformat'") local probformat %-5.1f // left-justified looks better in output table
 
 local pc2 : subinstr local pc " " ",", all
 tempname pmat

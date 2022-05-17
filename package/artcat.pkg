@@ -2,6 +2,8 @@ v 3
 d artcat: calculate sample size or power for a 2-arm trial with ordered categorical outcome
 d Program by Ian White
 d Version 1.0.1
-d Distribution-Date: 17feb2021
+d Distribution-Date: 17may2022
 f artcat.ado
 f artcat.sthlp
+f artcat.do
+f artcat.smcl

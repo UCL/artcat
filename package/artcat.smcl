@@ -1,0 +1,247 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\ado\ian\artcat\package\artcat.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}17 May 2022, 15:05:39
+{txt}
+{com}. * artcat: reproduce the examples in the SJ article
+. * IW 12feb2021, revised 17mar2022
+. version 13
+{txt}
+{com}. artcat, pc(.018 .036 .156 .141 .39) or(1/1.77) unfavourable
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (categorical version 1.0.1 17feb2021)
+{hline 76}
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 76}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.018 .036 .156 .141 .39
+{txt}{col 1}                   experimental arm {res}{col 39}given by odds ratio = .5649718
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.8
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 39}pc % {col 46}pe % 
+{col 19}1 least favourable{res}{col 39}1.8  {col 46}1.0  
+{txt}{col 19}2{res}{col 39}3.6  {col 46}2.1  
+{txt}{col 19}3{res}{col 39}15.6 {col 46}9.9  
+{txt}{col 19}4{res}{col 39}14.1 {col 46}10.3 
+{txt}{col 19}5{res}{col 39}39.0 {col 46}38.4 
+{txt}{col 19}6 most favourable{res}{col 39}25.9 {col 46}38.2 
+
+{txt}Total sample size (calculated):{res}{col 39}322
+{txt}{hline 76}
+
+{com}. artcat, pc(.259 .390 .141 .156 .036 .018) or(1.77) favourable noheader
+{txt}{hline 76}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio > 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.259 .39 .141 .156 .036 .018
+{txt}{col 1}                   experimental arm {res}{col 39}given by odds ratio = 1.77
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.8
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 39}pc % {col 46}pe % 
+{col 19}1 most favourable{res}{col 39}25.9 {col 46}38.2 
+{txt}{col 19}2{res}{col 39}39.0 {col 46}38.4 
+{txt}{col 19}3{res}{col 39}14.1 {col 46}10.3 
+{txt}{col 19}4{res}{col 39}15.6 {col 46}9.9  
+{txt}{col 19}5{res}{col 39}3.6  {col 46}2.1  
+{txt}{col 19}6 least favourable{res}{col 39}1.8  {col 46}1.0  
+
+{txt}Total sample size (calculated):{res}{col 39}322
+{txt}{hline 76}
+
+{com}. artcat, pc(.018 .036 .156 .141 .39) or(1/1.77) n(322) noprobtable unf nohead
+{txt}{hline 76}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.018 .036 .156 .141 .39
+{txt}{col 1}                   experimental arm {res}{col 39}given by odds ratio = .5649718
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Total sample size (designed){res}{col 39}322
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Power (calculated){res}{col 39}0.801
+{txt}{hline 76}
+
+{com}. artcat, pc(.018 .036 .156 .141 .39) or(1/1.77) whitehead noprobt unf nohead
+{txt}{hline 76}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.018 .036 .156 .141 .39
+{txt}{col 1}                   experimental arm {res}{col 39}given by odds ratio = .5649718
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.8
+{txt}{col 1}Method{res}{col 39}Whitehead
+
+{txt}Total sample size (calculated):{res}{col 39}320
+{txt}{hline 76}
+
+{com}. artcat, pc(.010 .021 .099 .103 .384) or(1) margin(1.33) noprobt unf nohead
+{txt}{hline 76}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Non-inferiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1.33
+{txt}{col 1}Non-inferiority region{res}{col 39}odds ratio < 1.33
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.01 .021 .099 .103 .384
+{txt}{col 1}                   experimental arm {res}{col 39}given by odds ratio = 1
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.8
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Total sample size (calculated):{res}{col 39}1314
+{txt}{hline 76}
+
+{com}. artcat, pc(.4) pe(.2) power(.9) unf nohead
+{txt}{hline 76}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.4
+{txt}{col 1}                   experimental arm {res}{col 39}.2
+{txt}Expected average odds ratio{col 39}{res}.3750002
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 39}pc % {col 46}pe % 
+{col 19}1 least favourable{res}{col 39}40.0 {col 46}20.0 
+{txt}{col 19}2 most favourable{res}{col 39}60.0 {col 46}80.0 
+
+{txt}Total sample size (calculated):{res}{col 39}216
+{txt}{hline 76}
+
+{com}. artbin, pr(0.4 0.2) power(.9) 
+
+{txt}{hi:ART} - {hi:A}NALYSIS OF {hi:R}ESOURCES FOR {hi:T}RIALS (binary version 2.0 08nov2021)
+{hline 78}
+A sample size program by Abdel Babiker, Patrick Royston, Friederike Barthel, 
+Ella Marley-Zagar and Ian White
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+{hline 78}
+Type of trial{col 40}{res}superiority
+{txt}Number of groups{col 40}{res}2
+{txt}Favourable/unfavourable outcome{col 40}{res}unfavourable
+{txt}{col 40}{it:Inferred by the program}
+Allocation ratio{col 40}{res}equal group sizes
+{txt}Statistical test assumed{col 40}{res}unconditional comparison of 2
+{txt}{col 40}{res} binomial proportions P1 and P2
+{txt}{col 40}{res} using the score test
+{txt}Local or distant{col 40}{res}distant
+{txt}Continuity correction{col 40}{res}no
+
+{txt}Anticipated event probabilities{col 40}{res}0.400 , 0.200 
+
+{txt}Alpha{col 40}{res}0.050 (two-sided)
+{txt}{col 40}{res}(taken as .025 one-sided)
+{txt}Power (designed){col 40}{res}0.900
+
+{txt}Total sample size (calculated){col 40}{res}218
+
+{txt}Sample size per group (calculated){col 40}{res}109 109
+{txt}Expected total number of events{col 40}{res}65.40    
+{txt}{hline 78}
+
+{com}. artcat, pc(.01 .4) cum or(.375) power(.9) unf nohead
+{txt}{hline 76}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.01 .4 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by odds ratio = .375
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 39}pc % {col 46}pe % 
+{col 19}1 least favourable{res}{col 39}1.0  {col 46}0.4  
+{txt}{col 19}2{res}{col 39}39.0 {col 46}19.6 
+{txt}{col 19}3 most favourable{res}{col 39}60.0 {col 46}80.0 
+
+{txt}Total sample size (calculated):{res}{col 39}216
+{txt}{hline 76}
+
+{com}. artcat, pc(.01 .1 .4) cum or(.375) power(.9) unf nohead
+{txt}{hline 76}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.01 .1 .4 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by odds ratio = .375
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 39}pc % {col 46}pe % 
+{col 19}1 least favourable{res}{col 39}1.0  {col 46}0.4  
+{txt}{col 19}2{res}{col 39}9.0  {col 46}3.6  
+{txt}{col 19}3{res}{col 39}30.0 {col 46}16.0 
+{txt}{col 19}4 most favourable{res}{col 39}60.0 {col 46}80.0 
+
+{txt}Total sample size (calculated):{res}{col 39}212
+{txt}{hline 76}
+
+{com}. artcat, pc(.4 .7) cum or(.375) power(.9) unf nohead
+{txt}{hline 76}
+Outcome type{res}{col 39}Categorical
+{txt}{col 1}Type of trial{res}{col 39}Superiority
+{txt}{col 1}Null hypothesis{res}{col 39}odds ratio = 1
+{txt}{col 1}Superiority region{res}{col 39}odds ratio < 1
+{txt}{col 1}Allocation ratio C:E{res}{col 39}1:1
+{txt}{col 1}Expected probabilities, control arm {res}{col 39}.4 .7 (cumulative)
+{txt}{col 1}                   experimental arm {res}{col 39}given by odds ratio = .375
+
+{txt}{col 1}Alpha{res}{col 39}.05 (two-sided)
+{txt}{col 1}Power (designed){res}{col 39}.9
+{txt}{col 1}Method{res}{col 39}ologit (variance NA)
+
+{txt}Table of expected probabilities{col 39}pc % {col 46}pe % 
+{col 19}1 least favourable{res}{col 39}40.0 {col 46}20.0 
+{txt}{col 19}2{res}{col 39}30.0 {col 46}26.7 
+{txt}{col 19}3 most favourable{res}{col 39}30.0 {col 46}53.3 
+
+{txt}Total sample size (calculated):{res}{col 39}153
+{txt}{hline 76}
+
+{com}. 
+{txt}end of do-file
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\ado\ian\artcat\package\artcat.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}17 May 2022, 15:05:40
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

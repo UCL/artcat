@@ -11,14 +11,9 @@ IW
 	reflect change to best/worst
 16dec2020
 	reflect change to un/favourable
+1jun2022: renamed test_consistency
 */
 
-prog drop _all
-cd \ado\ian\artcat\test
-adopath ++ ../package
-adopath ++ ../moreado
-cap log close
-log using test_artcat, replace text
 
 cscript "Ian's testing of artcat" adofile artcat artbin
 set type float
@@ -142,4 +137,3 @@ artcat, pc(.018 .036 .156 .141 .39) or(1/1.77) power(.8) probtable ologit
 
 *** CONCLUSION: ARTCAT PASSED ALL TESTS ***
 
-log close

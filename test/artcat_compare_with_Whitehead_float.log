@@ -1,0 +1,49 @@
+------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  c:\ado\ian\artcat\test\artcat_compare_with_Whitehead_float.log
+  log type:  text
+ opened on:   9 Jun 2022, 14:42:42
+file artcat_compare_with_Whitehead.do not found
+r(601);
+
+end of do-file
+
+r(601);
+
+. do "C:\Users\rmjwiww\AppData\Local\Temp\STD443c_000000.tmp"
+
+. /*
+> MAIN TESTING FILE FOR ARTCAT
+> artcat_test.do
+> IRW and EMZ, 1jun2022
+> */
+. 
+. cd c:\ado\ian\artcat
+c:\ado\ian\artcat
+
+. adopath ++ package
+  [1]              "package"
+  [2]              "moreado"
+  [3]              "c:\ado\ian\artcat\package"
+  [4]  (BASE)      "C:\Program Files\Stata17\ado\base/"
+  [5]  (SITE)      "C:\Program Files\Stata17\ado\site/"
+  [6]              "."
+  [7]  (PERSONAL)  "N:\Home\ado\personal/"
+  [8]  (PLUS)      "N:\Home\ado\stbplus/"
+  [9]  (OLDPLACE)  "c:\ado/"
+
+. adopath ++ moreado
+  [1]              "moreado"
+  [2]              "package"
+  [3]              "c:\ado\ian\artcat\package"
+  [4]  (BASE)      "C:\Program Files\Stata17\ado\base/"
+  [5]  (SITE)      "C:\Program Files\Stata17\ado\site/"
+  [6]              "."
+  [7]  (PERSONAL)  "N:\Home\ado\personal/"
+  [8]  (PLUS)      "N:\Home\ado\stbplus/"
+  [9]  (OLDPLACE)  "c:\ado/"
+
+. cd package
+c:\ado\ian\artcat\package
+
+. cap log close

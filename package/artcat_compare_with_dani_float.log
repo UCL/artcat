@@ -1,0 +1,277 @@
+-------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  c:\ado\ian\artcat\package\artcat_compare_with_dani_float.log
+  log type:  text
+ opened on:   9 Jun 2022, 15:21:39
+
+. // Validation code for the STATA program -artcat- (NI trials, sample size) co
+> mpared to R's -dani- (results are on the odds ratio scale)
+. // Note: -dani- gives ss calculations (not power) for non-inferiority trials 
+> (not superiority)
+. // Created by Ella Marley-Zagar, 9 July 2020
+. // Updated 15 July 2020, changed artcat ologit to artcat ologit(AA)
+. // Updated 22 July 2020, changed -nolist- to -noprobtable- for artcat v 0.6
+. // Last updated 7 Jan 2021, added in favourable/unfavourable options
+. // renamed compare_with_dani.do 1jun2022
+. 
+. clear all
+
+. set more off
+
+. 
+. which artcat
+c:\ado\ian\artcat/package\artcat.ado
+*! v1.1 Ian White 1jun2022
+
+. 
+. 
+. *****************************************************************************
+> ***
+. 
+. * p = 99%, margin=1.33, α = 5% (2-sided), β = 20%, OR
+. artcat, pc(0.01) or(1) margin(1.33) alpha(0.05) power(.8) ologit(AA) noprobta
+> ble unfav
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           non-inferiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1.330
+Non-inferiority region                  odds ratio < 1.330
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .01
+                   experimental arm     given by odds ratio = 1.000
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.800
+Method                                  ologit (variance AA)
+
+Total sample size (calculated)          38994
+Sample size per group (calculated)      19497 19497
+-------------------------------------------------------------------------
+
+. * gives 2n sample size:  38994
+. 
+. /* -dani- code in R:
+> 
+> install.packages("devtools")
+> library(devtools)
+> devtools::install_github("Matteo21Q/dani")
+> library(dani)
+> p0.expected<-0.01 # Expected control event rate
+> p1.expected<-p0.expected # Same as expected active event rate
+> NI.marg.OR<-1.33  # Non-inferiority margin on odds ratio scale
+> r<-1       # Allocation ratio
+> power<-0.8 # Power
+> alph<-0.025 # one-sided significance level
+> sample.size.OR<-sample.size.NI(sig.level=alph, power=power,  p0.expected=p0.e
+> xpected, p1.expected=p1.expected, NI.margin=NI.marg.OR, r=r, scale="OR")
+> */
+. 
+. * gives n sample size of 19497 so 2n = 38994
+. * same as artcat
+. 
+. 
+. *****************************************************************************
+> ***
+. 
+. * p=10%, margin=2, α = 10% (2-sided), β = 10%, OR
+. artcat, pc(0.1) or(1) margin(2) alpha(0.1) power(.9) ologit(AA) noprobtable u
+> nfav
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           non-inferiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 2.000
+Non-inferiority region                  odds ratio < 2.000
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .1
+                   experimental arm     given by odds ratio = 1.000
+
+Alpha                                   0.100 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance AA)
+
+Total sample size (calculated)          794
+Sample size per group (calculated)      397 397
+-------------------------------------------------------------------------
+
+. * gives 2n sample size:  794
+. 
+. /* -dani- code in R:
+> 
+> p0.expected<-0.1 # Expected control event rate
+> p1.expected<-p0.expected # Same as expected active event rate
+> NI.marg.OR<-2  # Non-inferiority margin on odds ratio scale
+> r<-1       # Allocation ratio
+> power<-0.9 # Power
+> alph<-0.05 # one-sided significance level
+> sample.size.OR<-sample.size.NI(sig.level=alph, power=power,  p0.expected=p0.e
+> xpected, p1.expected=p1.expected, NI.margin=NI.marg.OR, r=r, scale="OR")
+> 
+> */
+. 
+. * gives n sample size of 397 so 2n = 794
+. * very close to artcat
+. 
+. *****************************************************************************
+> ***
+. 
+. * p=5%, margin=0.5, α = 5% (2-sided), β = 10%, OR
+. artcat, pc(0.05) or(1) margin(0.5) alpha(0.05) power(.9) ologit(AA) noprobtab
+> le fav
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           non-inferiority
+Favourable/unfavourable outcome         favourable
+Null hypothesis                         odds ratio = 0.500
+Non-inferiority region                  odds ratio > 0.500
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .05
+                   experimental arm     given by odds ratio = 1.000
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance AA)
+
+Total sample size (calculated)          1842
+Sample size per group (calculated)      921 921
+-------------------------------------------------------------------------
+
+. * gives 2n sample size: 1842
+. 
+. /* -dani- code in R:
+> 
+> p0.expected<-0.05 # Expected control event rate
+> p1.expected<-p0.expected # Same as expected active event rate
+> NI.marg.OR<-0.5  # Non-inferiority margin on odds ratio scale
+> r<-1       # Allocation ratio
+> power<-0.9 # Power
+> alph<-0.025 # one-sided significance level
+> sample.size.OR<-sample.size.NI(sig.level=alph, power=power,  p0.expected=p0.e
+> xpected, p1.expected=p1.expected, NI.margin=NI.marg.OR, r=r, scale="OR")
+> 
+> */
+. 
+. * gives n sample size of 921 so 2n = 1842
+. * same as artcat
+. 
+. 
+. *****************************************************************************
+> ***
+. 
+. 
+. artcat, pc(0.04) or(1) margin(1.5) alpha(0.05) power(.8) ologit(AA) noprobtab
+> le unfav
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           non-inferiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1.500
+Non-inferiority region                  odds ratio < 1.500
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .04
+                   experimental arm     given by odds ratio = 1.000
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.800
+Method                                  ologit (variance AA)
+
+Total sample size (calculated)          4974
+Sample size per group (calculated)      2487 2487
+-------------------------------------------------------------------------
+
+. * gives 2n sample size: 4974
+. 
+. /* -dani- code in R:
+> 
+> p0.expected<-0.04 # Expected control event rate
+> p1.expected<-p0.expected # Same as expected active event rate
+> NI.marg.OR<-1.5  # Non-inferiority margin on odds ratio scale
+> r<-1       # Allocation ratio
+> power<-0.8 # Power
+> alph<-0.025 # one-sided significance level
+> sample.size.OR<-sample.size.NI(sig.level=alph, power=power,  p0.expected=p0.e
+> xpected, p1.expected=p1.expected, NI.margin=NI.marg.OR, r=r, scale="OR")
+> 
+> */
+. 
+. * gives n sample size of 2487 so 2n = 4974
+. * same as artcat
+. 
+. 
+. *****************************************************************************
+> ***
+. 
+. 
+. artcat, pc(0.8) or(1) margin(0.05) alpha(0.05) power(.95) ologit(AA) noprobta
+> ble fav
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           non-inferiority
+Favourable/unfavourable outcome         favourable
+Null hypothesis                         odds ratio = 0.050
+Non-inferiority region                  odds ratio > 0.050
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .8
+                   experimental arm     given by odds ratio = 1.000
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.950
+Method                                  ologit (variance AA)
+
+Total sample size (calculated)          38
+Sample size per group (calculated)      19 19
+-------------------------------------------------------------------------
+
+. * gives 2n sample size: 38
+. 
+. /* -dani- code in R:
+> 
+> p0.expected<-0.8 # Expected control event rate
+> p1.expected<-p0.expected # Same as expected active event rate
+> NI.marg.OR<-0.05  # Non-inferiority margin on odds ratio scale
+> r<-1       # Allocation ratio
+> power<-0.95 # Power
+> alph<-0.025 # one-sided significance level
+> sample.size.OR<-sample.size.NI(sig.level=alph, power=power,  p0.expected=p0.e
+> xpected, p1.expected=p1.expected, NI.margin=NI.marg.OR, r=r, scale="OR")
+> 
+> */
+. 
+. 
+. * gives n sample size of 19 so 2n = 38
+. * very close to artcat                                              
+. 
+. 
+. 
+end of do-file
+      name:  <unnamed>
+       log:  c:\ado\ian\artcat\package\artcat_compare_with_dani_float.log
+  log type:  text
+ closed on:   9 Jun 2022, 15:21:41
+-------------------------------------------------------------------------------

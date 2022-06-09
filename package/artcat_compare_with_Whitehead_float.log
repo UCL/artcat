@@ -1,0 +1,241 @@
+-------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  c:\ado\ian\artcat\package\artcat_compare_with_Whitehead_float.log
+  log type:  text
+ opened on:   9 Jun 2022, 15:21:31
+
+. // Validation code for the STATA program artcat
+. // Created by Ella Marley-Zagar, 11 June 2020
+. // Last updated: 06 Jan 2021
+. // 1jun2022: extracted Whitehead code and created master.do
+. //   renamed compare_with_Whitehead.do
+. 
+. clear all
+
+. set more off
+
+. 
+. which artcat
+c:\ado\ian\artcat/package\artcat.ado
+*! v1.1 Ian White 1jun2022
+
+. 
+. 
+. * Example 1 Whitehead Paper (listed under example 2 pg 2266)
+. artcat, pc(0.2 0.5 0.2 0.1) or(exp(0.887)) power(.9) whitehead noround
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+                                        inferred by the program
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .5 .2 .1
+                   experimental arm     given by odds ratio = 2.428
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.200  0.378
+                    2                   0.500  0.472
+                    3                   0.200  0.106
+                    4 least favourable  0.100  0.044
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  Whitehead
+
+Total sample size (calculated)          187.0
+Sample size per group (calculated)      93.5 93.5
+-------------------------------------------------------------------------
+
+. local samplesizewex1 = ceil(r(n))
+
+. 
+. if `samplesizewex1'!=187 { 
+.         di as err "Sample size is incorrect (Whitehead example 1, pc = (0.2 0
+> .5 0.2 0.1), log odds = 0.887, α = 5%, β = 10%).  Should be n = 187"
+.         exit 198
+. }
+
+. 
+. * Example 2 Whitehead Paper (pg 2266)
+. artcat, pc(0.26 0.38 0.24 0.12) or(exp(0.678)) power(.9) whitehead noround
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+                                        inferred by the program
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .26 .38 .24 .12
+                   experimental arm     given by odds ratio = 1.970
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.260  0.409
+                    2                   0.380  0.369
+                    3                   0.240  0.157
+                    4 least favourable  0.120  0.065
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  Whitehead
+
+Total sample size (calculated)          304.3
+Sample size per group (calculated)      152.1 152.1
+-------------------------------------------------------------------------
+
+. local samplesizewex2 = ceil(r(n))
+
+. 
+. if `samplesizewex2'!=305 { 
+.         di as err "Sample size is incorrect (Whitehead example 2, pc = ((0.26
+>  0.38 0.24 0.12), log odds = 0.678, α = 5%, β = 10%).  Should be n = 305"
+.         exit 198
+. }
+
+. 
+. * Example 3a Whitehead Paper pg 2267   // Artcat gives ss = 245 instead of 24
+> 4
+. artcat, pc(0.5) or(exp(0.847)) power(.9) whitehead noround
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+                                        inferred by the program
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .5
+                   experimental arm     given by odds ratio = 2.333
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.500  0.700
+                    2 least favourable  0.500  0.300
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  Whitehead
+
+Total sample size (calculated)          244.1
+Sample size per group (calculated)      122.0 122.0
+-------------------------------------------------------------------------
+
+. local samplesizewex3a = ceil(r(n))
+
+. 
+. if ("`samplesizewex3a'"!= "244" & "`samplesizewex3a'"!= "245") { 
+.         di as err "Sample size is incorrect (Whitehead example 3a, pc = 0.5, 
+> log odds = 0.847, α = 5%, β = 10%).  Should be n = 244"
+.         exit 198
+. }
+
+. 
+. * Example 3b Whitehead Paper pg 2267   
+. artcat, pc(0.2 0.3 0.3 0.2) or(exp(0.847)) power(.9) whitehead noround
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+                                        inferred by the program
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .3 .3 .2
+                   experimental arm     given by odds ratio = 2.333
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.200  0.368
+                    2                   0.300  0.332
+                    3                   0.300  0.203
+                    4 least favourable  0.200  0.097
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  Whitehead
+
+Total sample size (calculated)          189.7
+Sample size per group (calculated)      94.9 94.9
+-------------------------------------------------------------------------
+
+. local samplesizewex3b = ceil(r(n))
+
+. 
+. if `samplesizewex3b'!= 190 { 
+.         di as err "Sample size is incorrect (Whitehead example 3b, pc = (0.2 
+> 0.3 0.3 0.2), log odds = 0.847, α = 5%, β = 10%).  Should be n = 190"
+.         exit 198
+. }
+
+. 
+. * Example 3c Whitehead Paper pg 2268  
+. artcat, pc(0.22 0.28 0.28 0.22) or(exp(0.769)) power(.9) whitehead noround
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+                                        inferred by the program
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .22 .28 .28 .22
+                   experimental arm     given by odds ratio = 2.158
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.220  0.378
+                    2                   0.280  0.305
+                    3                   0.280  0.201
+                    4 least favourable  0.220  0.116
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  Whitehead
+
+Total sample size (calculated)          229.4
+Sample size per group (calculated)      114.7 114.7
+-------------------------------------------------------------------------
+
+. local samplesizewex3c = ceil(r(n))
+
+. 
+. if `samplesizewex3c'!= 230 { 
+.         di as err "Sample size is incorrect (Whitehead example 3c, pc = (0.22
+>  0.28 0.28 0.22), log odds = 0.769, α = 5%, β = 10%).  Should be n = 230"
+.         exit 198
+. }
+
+. 
+. 
+. 
+. 
+end of do-file
+      name:  <unnamed>
+       log:  c:\ado\ian\artcat\package\artcat_compare_with_Whitehead_float.log
+  log type:  text
+ closed on:   9 Jun 2022, 15:21:31
+-------------------------------------------------------------------------------

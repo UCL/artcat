@@ -1,0 +1,668 @@
+-------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  c:\ado\ian\artcat\package\artcat_compare_with_power_double.log
+  log type:  text
+ opened on:   9 Jun 2022, 15:21:44
+
+. // Validation code for the STATA program artcat: testing artcat vs Stata's -p
+> ower-
+. // Created by Ella Marley-Zagar, 6 July 2020
+. // Last updated 07 Jan 2021
+. // 1jun2022: renamed compare_with_power.do
+. 
+. 
+. 
+. clear all
+
+. set more off
+
+. 
+. which artcat
+c:\ado\ian\artcat/package\artcat.ado
+*! v1.1 Ian White 1jun2022
+
+. 
+. 
+. ****************
+. * Sample size
+. *****************
+. 
+. 
+. artcat, pc(0.2) pe(0.5) power(.9) fav // 103
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2
+                   experimental arm     .5 
+Anticipated average odds ratio          4.000
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.200  0.500
+                    2 least favourable  0.800  0.500
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          104
+Sample size per group (calculated)      52 52
+-------------------------------------------------------------------------
+
+. local n1artcat = r(n)
+
+. power twoproportions 0.2 0.5, alpha(0.05) power(0.9) // 104
+
+Performing iteration ...
+
+Estimated sample sizes for a two-sample proportions test
+Pearson's chi-squared test 
+H0: p2 = p1  versus  Ha: p2 != p1
+
+Study parameters:
+
+        alpha =    0.0500
+        power =    0.9000
+        delta =    0.3000  (difference)
+           p1 =    0.2000
+           p2 =    0.5000
+
+Estimated sample sizes:
+
+            N =       104
+  N per group =        52
+
+. local n1power = r(N)
+
+. local absdif1 = abs(`n1artcat' - `n1power')
+
+. di `absdif1'
+0
+
+. assert `absdif1' < 10
+
+. 
+. 
+. artcat, pc(0.24) pe(0.38) power(.8) fav // 338
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .24
+                   experimental arm     .38 
+Anticipated average odds ratio          1.941
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.240  0.380
+                    2 least favourable  0.760  0.620
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.800
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          338
+Sample size per group (calculated)      169 169
+-------------------------------------------------------------------------
+
+. local n2artcat = r(n)
+
+. power twoproportions 0.24 0.38, alpha(0.05) power(0.8) // 342
+
+Performing iteration ...
+
+Estimated sample sizes for a two-sample proportions test
+Pearson's chi-squared test 
+H0: p2 = p1  versus  Ha: p2 != p1
+
+Study parameters:
+
+        alpha =    0.0500
+        power =    0.8000
+        delta =    0.1400  (difference)
+           p1 =    0.2400
+           p2 =    0.3800
+
+Estimated sample sizes:
+
+            N =       342
+  N per group =       171
+
+. local n2power = r(N)
+
+. local absdif2 = abs(`n2artcat' - `n2power')
+
+. di `absdif2'
+4
+
+. assert `absdif2' < 10
+
+. 
+. artcat, pc(0.05) pe(0.07) alpha(0.1) power(.8) fav // 3458
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .05
+                   experimental arm     .07 
+Anticipated average odds ratio          1.430
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.050  0.070
+                    2 least favourable  0.950  0.930
+
+Alpha                                   0.100 (two-sided)
+Power (designed)                        0.800
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          3458
+Sample size per group (calculated)      1729 1729
+-------------------------------------------------------------------------
+
+. local n3artcat = r(n)
+
+. power twoproportions 0.05 0.07, alpha(0.1) power(0.8) // 3486
+
+Performing iteration ...
+
+Estimated sample sizes for a two-sample proportions test
+Pearson's chi-squared test 
+H0: p2 = p1  versus  Ha: p2 != p1
+
+Study parameters:
+
+        alpha =    0.1000
+        power =    0.8000
+        delta =    0.0200  (difference)
+           p1 =    0.0500
+           p2 =    0.0700
+
+Estimated sample sizes:
+
+            N =     3,486
+  N per group =     1,743
+
+. local n3power = r(N)
+
+. local absdif3 = abs(`n3artcat' - `n3power')
+
+. di `absdif3'
+28
+
+. assert `absdif3' < 10                                                        
+>     /***********  ASSERTION FALSE, DIFFERENCE OF 28 ***********/
+assertion is false
+r(9);
+
+. 
+. artcat, pc(0.5) pe(0.8) alpha(0.05) power(.75) fav // 67
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .5
+                   experimental arm     .8 
+Anticipated average odds ratio          4.000
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.500  0.800
+                    2 least favourable  0.500  0.200
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.750
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          68
+Sample size per group (calculated)      34 34
+-------------------------------------------------------------------------
+
+. local n4artcat = r(n)
+
+. power twoproportions 0.5 0.8, alpha(0.05) power(0.75) // 70
+
+Performing iteration ...
+
+Estimated sample sizes for a two-sample proportions test
+Pearson's chi-squared test 
+H0: p2 = p1  versus  Ha: p2 != p1
+
+Study parameters:
+
+        alpha =    0.0500
+        power =    0.7500
+        delta =    0.3000  (difference)
+           p1 =    0.5000
+           p2 =    0.8000
+
+Estimated sample sizes:
+
+            N =        70
+  N per group =        35
+
+. local n4power = r(N)
+
+. local absdif4 = abs(`n4artcat' - `n4power')
+
+. di `absdif4'
+2
+
+. assert `absdif4' < 10 
+
+. 
+. artcat, pc(0.01) pe(0.03) alpha(0.05) power(.8) fav // 1399
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .01
+                   experimental arm     .03 
+Anticipated average odds ratio          3.062
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.010  0.030
+                    2 least favourable  0.990  0.970
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.800
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          1400
+Sample size per group (calculated)      700 700
+-------------------------------------------------------------------------
+
+. local n5artcat = r(n)
+
+. power twoproportions 0.01 0.03, alpha(0.05) power(0.8) // 1538
+
+Performing iteration ...
+
+Estimated sample sizes for a two-sample proportions test
+Pearson's chi-squared test 
+H0: p2 = p1  versus  Ha: p2 != p1
+
+Study parameters:
+
+        alpha =    0.0500
+        power =    0.8000
+        delta =    0.0200  (difference)
+           p1 =    0.0100
+           p2 =    0.0300
+
+Estimated sample sizes:
+
+            N =     1,538
+  N per group =       769
+
+. local n5power = r(N)
+
+. local absdif5 = abs(`n5artcat' - `n5power')
+
+. di `absdif5'
+138
+
+. assert `absdif5' < 10                                                        
+>    /***********  ASSERTION FALSE, DIFFERENCE OF 139 ***********/
+assertion is false
+r(9);
+
+. 
+. * NB:
+. artbin, pr(0.01 0.03) alpha(0.05) power(0.8) distant(1) // 1539
+ You are using the old syntax distant().  Distant is the default, if you requir
+> e local please specify -local-
+r(198);
+
+. 
+. ***********
+. * Power
+. ***********
+. 
+. 
+. artcat, pc(0.04) pe(0.05) alpha(0.05) n(520) fav // 0.081
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .04
+                   experimental arm     .05 
+Anticipated average odds ratio          1.263
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.040  0.050
+                    2 least favourable  0.960  0.950
+
+Alpha                                   0.050 (two-sided)
+Total sample size (designed)            520
+Method                                  ologit (variance NA)
+
+Power (calculated)                      0.081
+-------------------------------------------------------------------------
+
+. local power1artcat = r(power)
+
+. power twoproportions 0.04 0.05, alpha(0.05) n(520) // 0.0852
+
+Estimated power for a two-sample proportions test
+Pearson's chi-squared test 
+H0: p2 = p1  versus  Ha: p2 != p1
+
+Study parameters:
+
+        alpha =    0.0500
+            N =       520
+  N per group =       260
+        delta =    0.0100  (difference)
+           p1 =    0.0400
+           p2 =    0.0500
+
+Estimated power:
+
+        power =    0.0852
+
+. local power1power = r(power)
+
+. local absdifpower1 = abs(`power1artcat' - `power1power')
+
+. di `absdifpower1'
+.00440128
+
+. assert `absdifpower1' < 0.01 
+
+. 
+. 
+. 
+. artcat, pc(0.06) pe(0.23) alpha(0.05) n(250) fav // 0.974
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .06
+                   experimental arm     .23 
+Anticipated average odds ratio          4.680
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.060  0.230
+                    2 least favourable  0.940  0.770
+
+Alpha                                   0.050 (two-sided)
+Total sample size (designed)            250
+Method                                  ologit (variance NA)
+
+Power (calculated)                      0.974
+-------------------------------------------------------------------------
+
+. local power2artcat = r(power)
+
+. power twoproportions 0.06 0.23, alpha(0.05) n(250) // 0.9722
+
+Estimated power for a two-sample proportions test
+Pearson's chi-squared test 
+H0: p2 = p1  versus  Ha: p2 != p1
+
+Study parameters:
+
+        alpha =    0.0500
+            N =       250
+  N per group =       125
+        delta =    0.1700  (difference)
+           p1 =    0.0600
+           p2 =    0.2300
+
+Estimated power:
+
+        power =    0.9722
+
+. local power2power = r(power)
+
+. local absdifpower2 = abs(`power2artcat' - `power2power')
+
+. di `absdifpower2'
+.00166528
+
+. assert `absdifpower2' < 0.01 
+
+. 
+. artcat, pc(0.2) pe(0.3) alpha(0.1) n(380) fav // 0.732
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2
+                   experimental arm     .3 
+Anticipated average odds ratio          1.714
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.200  0.300
+                    2 least favourable  0.800  0.700
+
+Alpha                                   0.100 (two-sided)
+Total sample size (designed)            380
+Method                                  ologit (variance NA)
+
+Power (calculated)                      0.732
+-------------------------------------------------------------------------
+
+. local power3artcat = r(power)
+
+. power twoproportions 0.2 0.3, alpha(0.1) n(380) //  0.7292
+
+Estimated power for a two-sample proportions test
+Pearson's chi-squared test 
+H0: p2 = p1  versus  Ha: p2 != p1
+
+Study parameters:
+
+        alpha =    0.1000
+            N =       380
+  N per group =       190
+        delta =    0.1000  (difference)
+           p1 =    0.2000
+           p2 =    0.3000
+
+Estimated power:
+
+        power =    0.7292
+
+. local power3power = r(power)
+
+. local absdifpower3 = abs(`power3artcat' - `power3power')
+
+. di `absdifpower3'
+.0032137
+
+. assert `absdifpower3' < 0.01 
+
+. 
+. 
+. artcat, pc(0.01) pe(0.03) alpha(0.05) n(2000) fav // 0.910
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .01
+                   experimental arm     .03 
+Anticipated average odds ratio          3.062
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.010  0.030
+                    2 least favourable  0.990  0.970
+
+Alpha                                   0.050 (two-sided)
+Total sample size (designed)            2000
+Method                                  ologit (variance NA)
+
+Power (calculated)                      0.910
+-------------------------------------------------------------------------
+
+. local power4artcat = r(power)
+
+. power twoproportions 0.01 0.03, alpha(0.05) n(2000) //  0.8921
+
+Estimated power for a two-sample proportions test
+Pearson's chi-squared test 
+H0: p2 = p1  versus  Ha: p2 != p1
+
+Study parameters:
+
+        alpha =    0.0500
+            N =     2,000
+  N per group =     1,000
+        delta =    0.0200  (difference)
+           p1 =    0.0100
+           p2 =    0.0300
+
+Estimated power:
+
+        power =    0.8921
+
+. local power4power = r(power)
+
+. local absdifpower4 = abs(`power4artcat' - `power4power')
+
+. di `absdifpower4'
+.01777072
+
+. assert `absdifpower4' < 0.01                                                 
+>    /***********  ASSERTION FALSE, DIFFERENCE OF 0.018 ***********/
+assertion is false
+r(9);
+
+. 
+. 
+. artcat, pc(0.06) pe(0.08) alpha(0.1) n(3030) fav //  0.699
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .06
+                   experimental arm     .08 
+Anticipated average odds ratio          1.362
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.060  0.080
+                    2 least favourable  0.940  0.920
+
+Alpha                                   0.100 (two-sided)
+Total sample size (designed)            3030
+Method                                  ologit (variance NA)
+
+Power (calculated)                      0.699
+-------------------------------------------------------------------------
+
+. local power5artcat = r(power)
+
+. power twoproportions 0.06 0.08, alpha(0.1) n(3030) //  0.6961
+
+Estimated power for a two-sample proportions test
+Pearson's chi-squared test 
+H0: p2 = p1  versus  Ha: p2 != p1
+
+Study parameters:
+
+        alpha =    0.1000
+            N =     3,030
+  N per group =     1,515
+        delta =    0.0200  (difference)
+           p1 =    0.0600
+           p2 =    0.0800
+
+Estimated power:
+
+        power =    0.6961
+
+. local power5power = r(power)
+
+. local absdifpower5 = abs(`power5artcat' - `power5power')
+
+. di `absdifpower5'
+.00286145
+
+. assert `absdifpower5' < 0.01 
+
+. 
+. 
+end of do-file
+      name:  <unnamed>
+       log:  c:\ado\ian\artcat\package\artcat_compare_with_power_double.log
+  log type:  text
+ closed on:   9 Jun 2022, 15:21:46
+-------------------------------------------------------------------------------

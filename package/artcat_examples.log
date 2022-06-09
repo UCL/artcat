@@ -1,0 +1,271 @@
+-----------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\ado\ian\artcat\package\artcat_examples.log
+  log type:  text
+ opened on:   9 Jun 2022, 15:06:55
+
+. /* 
+> Do-file to run the examples in section 4 of 
+> "Sample size calculation for an ordered categorical outcome" 
+> by White et al
+> */
+. 
+. // Six-level outcome
+. 
+. artcat, pc(.018 .036 .156 .141 .39) or(1/1.77) unfavourable 
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .018 .036 .156 .141 .39
+                   experimental arm     given by odds ratio = 0.565
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.018  0.010
+                    2                   0.036  0.021
+                    3                   0.156  0.099
+                    4                   0.141  0.103
+                    5                   0.390  0.384
+                    6 most favourable   0.259  0.382
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.800
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          322
+Sample size per group (calculated)      161 161
+-------------------------------------------------------------------------
+
+. 
+. artcat, pc(.259 .390 .141 .156 .036 .018) or(1.77) favourable noheader
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .259 .39 .141 .156 .036 .018
+                   experimental arm     given by odds ratio = 1.770
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.259  0.382
+                    2                   0.390  0.384
+                    3                   0.141  0.103
+                    4                   0.156  0.099
+                    5                   0.036  0.021
+                    6 least favourable  0.018  0.010
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.800
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          322
+Sample size per group (calculated)      161 161
+-------------------------------------------------------------------------
+
+. 
+. artcat, pc(.018 .036 .156 .141 .39) or(1/1.77) n(322) noprobtable unf nohead
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .018 .036 .156 .141 .39
+                   experimental arm     given by odds ratio = 0.565
+
+Alpha                                   0.050 (two-sided)
+Total sample size (designed)            322
+Method                                  ologit (variance NA)
+
+Power (calculated)                      0.801
+-------------------------------------------------------------------------
+
+. 
+. artcat, pc(.018 .036 .156 .141 .39) or(1/1.77) whitehead noprobt unf nohead
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .018 .036 .156 .141 .39
+                   experimental arm     given by odds ratio = 0.565
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.800
+Method                                  Whitehead
+
+Total sample size (calculated)          320
+Sample size per group (calculated)      160 160
+-------------------------------------------------------------------------
+
+. 
+. artcat, pc(.010 .021 .099 .103 .384) or(1) margin(1.33) noprobt unf nohead
+-------------------------------------------------------------------------
+Type of trial                           non-inferiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1.330
+Non-inferiority region                  odds ratio < 1.330
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .01 .021 .099 .103 .384
+                   experimental arm     given by odds ratio = 1.000
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.800
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          1314
+Sample size per group (calculated)      657 657
+-------------------------------------------------------------------------
+
+. 
+. 
+. // Binary outcome and comparison with artbin
+. 
+. artcat, pc(.4) pe(.2) power(.9) unf nohead
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .4
+                   experimental arm     .2 
+Anticipated average odds ratio          0.375
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.400  0.200
+                    2 most favourable   0.600  0.800
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          216
+Sample size per group (calculated)      108 108
+-------------------------------------------------------------------------
+
+. 
+. artbin, pr(0.4 0.2) power(.9)
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (binary version 2.0 08nov2021)
+------------------------------------------------------------------------------
+A sample size program by Abdel Babiker, Patrick Royston, Friederike Barthel, 
+Ella Marley-Zagar and Ian White
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+------------------------------------------------------------------------------
+Type of trial                          superiority
+Number of groups                       2
+Favourable/unfavourable outcome        unfavourable
+                                       Inferred by the program
+Allocation ratio                       equal group sizes
+Statistical test assumed               unconditional comparison of 2
+                                        binomial proportions P1 and P2
+                                        using the score test
+Local or distant                       distant
+Continuity correction                  no
+
+Anticipated event probabilities        0.400 , 0.200 
+
+Alpha                                  0.050 (two-sided)
+                                       (taken as .025 one-sided)
+Power (designed)                       0.900
+
+Total sample size (calculated)         218
+
+Sample size per group (calculated)     109 109
+Expected total number of events        65.40    
+------------------------------------------------------------------------------
+
+. 
+. 
+. // Effect of subdividing the categories
+. 
+. artcat, pc(.01 .4) cum or(.375) power(.9) unf nohead
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .01 .4 (cumulative)
+                   experimental arm     given by odds ratio = 0.375
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.010  0.004
+                    2                   0.390  0.196
+                    3 most favourable   0.600  0.800
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          216
+Sample size per group (calculated)      108 108
+-------------------------------------------------------------------------
+
+. 
+. artcat, pc(.01 .1 .4) cum or(.375) power(.9) unf nohead
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .01 .1 .4 (cumulative)
+                   experimental arm     given by odds ratio = 0.375
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.010  0.004
+                    2                   0.090  0.036
+                    3                   0.300  0.160
+                    4 most favourable   0.600  0.800
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          212
+Sample size per group (calculated)      106 106
+-------------------------------------------------------------------------
+
+. 
+. artcat, pc(.4 .7) cum or(.375) power(.9) unf nohead
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .4 .7 (cumulative)
+                   experimental arm     given by odds ratio = 0.375
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.400  0.200
+                    2                   0.300  0.267
+                    3 most favourable   0.300  0.533
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          154
+Sample size per group (calculated)      77 77
+-------------------------------------------------------------------------
+
+. 
+end of do-file
+      name:  <unnamed>
+       log:  C:\ado\ian\artcat\package\artcat_examples.log
+  log type:  text
+ closed on:   9 Jun 2022, 15:06:56
+-----------------------------------------------------------------------------------------------------

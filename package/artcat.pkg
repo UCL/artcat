@@ -1,9 +1,35 @@
 v 3
 d artcat: calculate sample size or power for a 2-arm trial with ordered categorical outcome
 d Program by Ian White
-d Version 1.0.1
-d Distribution-Date: 17may2022
+d Version 1.1
+d Distribution-Date: 1jun2022
+
+* main package files
 f artcat.ado
 f artcat.sthlp
-f artcat.do
-f artcat.smcl
+
+* examples as in SJ article
+artcat_examples.do
+artcat_examples.log
+
+* main testing file
+artcat_test.do
+
+* testing files called by artcat_test, and their log files
+artcat_check_errormsgs.do
+artcat_check_errormsgs_double.log
+artcat_check_errormsgs_float.log
+artcat_compare_with_Whitehead.do
+artcat_compare_with_Whitehead_double.log
+artcat_compare_with_Whitehead_float.log
+artcat_compare_with_artbin.do
+artcat_compare_with_artbin_double.log
+artcat_compare_with_artbin_float.log
+artcat_compare_with_dani.do
+artcat_compare_with_dani_double.log
+artcat_compare_with_dani_float.log
+artcat_compare_with_power.do
+artcat_compare_with_power_double.log
+artcat_compare_with_power_float.log
+artcat_test_consistency.do
+artcat_test_consistency.log

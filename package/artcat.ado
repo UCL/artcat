@@ -1,5 +1,7 @@
 /* 
-*! v1.0.1 Ian White 17feb2021
+*! v1.1 Ian White 1jun2022
+	harmonise output with artbin
+v1.0.1 Ian White 17feb2021
 	Correct output formatting if power defaults
 v1.0.0 Ian White 12feb2021
 	renamed v1.0.0 at SJ submission & repo publication
@@ -83,8 +85,8 @@ syntax, pc(numlist) [CUMulative /// control arm options
 	noPROBTable PROBFormat(string) FORMat(string) noRound noHEADer /// output options
 	debug clear RETVars /// undocumented options
 	]
-local version 1.0.1
-local date 17feb2021
+local version 1.1
+local date 1jun2022
 
 *** PARSE
 if !mi("`or'") {
@@ -108,7 +110,7 @@ if !inlist("`ologit'","","NN","NA","AA") exit498 ologit(`ologit') not allowed
 local nmethods = !mi("`pe'") + !mi("`or'") + !mi("`rr'")
 if `nmethods'==0 {
 	if `margin'!=1 {
-		di as txt "Note: assuming expected odds ratio = 1"
+		di as txt "Note: assuming anticipated odds ratio = 1"
 		local or 1
 	}
 	else exit198 please specify one of pe, or, rr
@@ -123,7 +125,7 @@ if mi("`or'") & !mi("`whitehead'") exit198 Whitehead method requires or
 if mi("`debug'") local qui qui
 
 if mi("`format'") local format = cond(!mi("`power'"),cond(mi("`round'"),"%6.0f","%6.1f"),"%6.3f")
-if mi("`probformat'") local probformat %-5.1f // left-justified looks better in output table
+if mi("`probformat'") local probformat %5.3f // previously had %-5.1f (left-justified)
 
 local pc2 : subinstr local pc " " ",", all
 tempname pmat
@@ -164,7 +166,7 @@ if !mi("`unfavourable'") & !mi("`favourable'") exit198 please don't specify both
 * settings for output
 local maxwidth = 61 + length("`version' `date'")
 local col1 1 
-local col2 39
+local col2 41
 * and specifically for probtable (start at col3)
 local col3 = `col2' - 20 // for levels
 local col4 = `col2' // for "pc %"
@@ -189,7 +191,6 @@ if mi("`header'") {
 	di as txt "MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK." 
 }
 di as txt "{hline `maxwidth'}"
-di as txt "Outcome type" as res `col2' "Categorical"  
 
 *** START THE CALCULATION
 local za = invnormal(1-`alpha'/`sides')
@@ -252,7 +253,7 @@ forvalues r=1/3 {
 drop p1sum p2sum p3sum
 * we now have variables: level p1 p2 p3
 
-if mi("`probtable'") { // create matrix of expected probabilities
+if mi("`probtable'") { // create matrix of anticipated probabilities
 	if `margin'!=1 local p3 p3
 	tempname probmatrix
 	mkmat p1 p2 `p3', matrix(`probmatrix') 
@@ -346,6 +347,10 @@ local rightnature = cond(!mi("`unfavourable'"),"favourable","unfavourable")
 local lefttext = cond(!mi("`unfavourable'"),"least favourable","most favourable")
 local righttext = cond(!mi("`unfavourable'"),"most favourable","least favourable")
 
+if `margin'==1 local trialtype "sup"
+else if (`margin'<1 & !mi("`favourable'")) | (`margin'>1 & !mi("`unfavourable'")) local trialtype "ni"
+else if (`margin'<1 & !mi("`unfavourable'")) | (`margin'>1 & !mi("`favourable'")) local trialtype "ss"
+
 
 *** OUTPUT THE TRIAL DESIGN
 
@@ -354,55 +359,54 @@ local ltgt = cond(!mi("`unfavourable'"),"<",">")
 
 * trial type
 di as txt `col1' "Type of trial" _c
-if `margin'==1 {
-	di as res `col2' "Superiority"
-	di as txt `col1' "Null hypothesis" as res `col2' "odds ratio = `margin'"
+if "`trialtype'"=="sup" di as res `col2' "superiority"
+else if "`trialtype'"=="ni" di as res `col2' "non-inferiority" 
+else if "`trialtype'"=="ss" di as res `col2' "substantial-superiority"
+else di as error "Program error: trialtype undefined"
+
+* fav/unfav outcome
+di as txt `col1' "Favourable/unfavourable outcome" _c
+di as res `col2' "`unfavourable'`favourable'"
+if "`direction'" == "inferred" di as res `col2' "{it:inferred by the program}"
+* null hypothesis
+if "`trialtype'"=="sup" {
+	di as txt `col1' "Null hypothesis" as res `col2' "odds ratio = 1"
 	di as txt `col1' "Superiority region" as res `col2' "odds ratio `ltgt' 1"
 }
-else if (`margin'<1 & !mi("`favourable'")) | (`margin'>1 & !mi("`unfavourable'")) {
-	di as res `col2' "Non-inferiority" 
-	di as txt `col1' "Null hypothesis" as res `col2' "odds ratio = `margin'"
-	di as txt `col1' "Non-inferiority region" as res `col2' "odds ratio `ltgt' " string(`margin',"%9.0g")
+else if "`trialtype'"=="ni" {
+	di as txt `col1' "Null hypothesis" as res `col2' "odds ratio = " `probformat' `margin'
+	di as txt `col1' "Non-inferiority region" as res `col2' "odds ratio `ltgt' " `probformat' `margin'
 }
-else if (`margin'<1 & !mi("`unfavourable'")) | (`margin'>1 & !mi("`favourable'")) {
-	di as res `col2' "Substantial-superiority"
-	di as txt `col1' "Null hypothesis" as res `col2' "odds ratio = `margin'"
-	di as txt `col1' "Substantial-superiority region" as res `col2' "odds ratio `ltgt' " string(`margin',"%9.0g")
+else if "`trialtype'"=="ss" {
+	di as txt `col1' "Null hypothesis" as res `col2' "odds ratio = " `probformat' `margin'
+	di as txt `col1' "Substantial-superiority region" as res `col2' "odds ratio `ltgt' " `probformat' `margin'
 }
+
 
 * other settings
 di as txt `col1' "Allocation ratio C:E" as res `col2' "`aratiolong'"
-di as txt `col1' "Expected probabilities, control arm " as res `col2' "`pc'`cumbrackets'"
+di as txt `col1' "Anticipated probabilities, control arm " as res `col2' "`pc'`cumbrackets'"
 di as txt `col1' "                   experimental arm " _c
-if !mi("`or'") di as res `col2' "given by odds ratio = " string(`or',"%9.0g")
-else if !mi("`rr'") di as res `col2' "given by risk ratio = " string(`rr',"%9.0g")
-else di as res `col2' "`pe'`cumbrackets'"
+if !mi("`or'") di as res `col2' "given by odds ratio = " `probformat' `or'
+else if !mi("`rr'") di as res `col2' "given by risk ratio = " `probformat' `rr'
+else di as res `col2' `probformat' "`pe' `cumbrackets'"
 
 *** check and output the outcome direction
-if mi("`or'") di as txt "Expected average odds ratio" `col2' as res `orcalcdisp'
-if `orcalc'==`margin' exit498 or=margin makes a trial impossible
-if "`direction'"=="inferred" {
-	di as txt _n "{it:The program has inferred that the left-most outcome level is the `lefttext'.}"
-	di as txt "{it:You can avoid seeing this message in future by specifying the {cmd:`leftnature'} option.}"
-}
+if mi("`or'") di as txt "Anticipated average odds ratio" `col2' as res `probformat' `orcalcdisp'
+if `orcalc'==`margin' exit498 or = margin makes a trial impossible
+*if "`direction'"=="inferred" {
+*	di as txt _n "{it:The program has inferred that the left-most outcome level is the `lefttext'.}"
+*	di as txt "{it:You can avoid seeing this message in future by specifying the {cmd:`leftnature'} option.}"
+*}
 if "`direction'"!="inferred" {
 	if !mi("`favourable'") & `orcalc'<`margin' exit498 or (`orcalcdisp') < margin (`margin') is incompatible with favourable option
 	if !mi("`unfavourable'") & `orcalc'>`margin' exit498 or (`orcalcdisp') > margin (`margin') is incompatible with unfavourable option
 }
 
-di
-di as txt `col1' "Alpha" as res `col2' `alpha' " (`sidestext')"
-if !mi("`power'") di as txt `col1' "Power (designed)" as res `col2' `power'
-if !mi("`n'")     di as txt `col1' "Total sample size (designed)" as res `col2' `n'
-di as txt `col1' "Method" _c
-if !mi("`whitehead'") di as res `col2' "Whitehead"
-else di as res `col2' "ologit (variance `ologit')"
-
 if mi("`probtable'") {
-	di _n as text "Table of expected probabilities" _c
-	mat `probmatrix' = `probmatrix'*100
-	di as txt `col4' `stringformat' "pc %" `col5' `stringformat' "pe %" _c
-	if `margin'!=1 di `col6' `stringformat' "pe null %" _c
+	di _n as text "Table of anticipated probabilities" _c
+	di as txt `col4' `stringformat' "C" `col5' `stringformat' "E" _c
+	if `margin'!=1 di `col6' `stringformat' "E null" _c
 	di
 	forvalues level=1/`levels' {
 		local levlab `level'
@@ -416,20 +420,40 @@ if mi("`probtable'") {
 	}
 }
 
+di
+di as txt `col1' "Alpha" as res `col2' `probformat' `alpha' " (`sidestext')"
+if !mi("`power'") di as txt `col1' "Power (designed)" as res `col2' `probformat' `power'
+if !mi("`n'")     di as txt `col1' "Total sample size (designed)" as res `col2' `n'
+di as txt `col1' "Method" _c
+if !mi("`whitehead'") di as res `col2' "Whitehead"
+else di as res `col2' "ologit (variance `ologit')"
+
 // OUTPUT RESULT
 di
 if mi("`n'") {
 	foreach method in whitehead ologit_NN ologit_NA ologit_AA {
 		if !mi("`n_`method''") {
-			if mi("`round'") local n_`method' = ceil(`n_`method'')
+			local n_`method'_E = `n_`method'' / (1+`A')
+			local n_`method'_C = `n_`method'_E' * `A'
+			if mi("`round'") {
+				local n_`method'_C = ceil(`n_`method'_C')
+				local n_`method'_E = ceil(`n_`method'_E')
+				local n_`method' = `n_`method'_C' + `n_`method'_E'
+			}
 *			di as txt `col1' "Method `method'" as res `col2' `format' `n_`method''
 			return scalar n_`method' = `n_`method''
 		}
 	}
-	if "`whitehead'"=="whitehead" local N=`n_whitehead'
-	else local N=`n_ologit_`ologit''
+	if "`whitehead'"=="whitehead" local methodend whitehead
+	else local methodend ologit_`ologit'
+	local N = `n_`methodend''
+	local N_C = `n_`methodend'_C'
+	local N_E = `n_`methodend'_E'
 	return scalar n = `N'
-	di as txt "Total sample size (calculated):" as res `col2' string(`N',"`format'")
+	return scalar nC = `N_C'
+	return scalar nE = `N_E'
+	di as txt "Total sample size (calculated)" as res `col2' string(`N',"`format'")
+	di as txt "Sample size per group (calculated)" as res `col2' string(`N_C',"`format'") " " string(`N_E',"`format'") 
 }
 if mi("`power'") {
 	foreach method in whitehead ologit_NN ologit_NA ologit_AA {

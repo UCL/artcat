@@ -1,0 +1,1207 @@
+-------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  c:\ado\ian\artcat\package\artcat_test_consistency.log
+  log type:  text
+ opened on:   9 Jun 2022, 15:21:51
+
+. do artcat_test_consistency
+
+. /*
+> Testing script for artcat
+> IW
+> 1jun2022 use new artbin
+> 15jul2020 minor updates 
+> 24nov2020 
+>         reflect change of default to ologit 
+>         add test of whitehead=NN
+>         add test of increase/decrease
+> 9dec2020
+>         reflect change to best/worst
+> 16dec2020
+>         reflect change to un/favourable
+> 1jun2022: renamed test_consistency
+> */
+. 
+. 
+. cscript "Ian's testing of artcat" adofile artcat artbin
+--------------------------------------------------BEGIN Ian's testing of artcat
+
+-> which artcat, usesysdir
+c:\ado\ian\artcat/package\artcat.ado
+*! v1.1 Ian White 1jun2022
+
+-> which artbin, usesysdir
+c:\ado\ian\artcat/moreado\artbin.ado
+*!version 2.0.0 EMZ    08nov2021
+
+. set type float
+
+. 
+. /* SETTING 1 */
+. 
+. * rr vs pe
+. artcat, pc(.2 .4 .6) rr(.5) power(.9) probtable cum noround unfavourable
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .4 .6 (cumulative)
+                   experimental arm     given by risk ratio = 0.500
+Anticipated average odds ratio          0.321
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.200  0.100
+                    2                   0.200  0.100
+                    3                   0.200  0.100
+                    4 most favourable   0.400  0.700
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          123.1
+Sample size per group (calculated)      61.6 61.6
+-------------------------------------------------------------------------
+
+. local n1 = r(n_ologit_NA)
+
+. 
+. * format of pc
+. artcat, pc(.2, .4, .6) rr(.5) power(.9) probtable cum noround unfavourable
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .4 .6 (cumulative)
+                   experimental arm     given by risk ratio = 0.500
+Anticipated average odds ratio          0.321
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.200  0.100
+                    2                   0.200  0.100
+                    3                   0.200  0.100
+                    4 most favourable   0.400  0.700
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          123.1
+Sample size per group (calculated)      61.6 61.6
+-------------------------------------------------------------------------
+
+. assert reldif(r(n_ologit_NA),`n1')<1E-6
+
+. 
+. artcat, pc(.2 .2 .2) rr(.5) power(.9) probtable  noround unfavourable
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .2 .2
+                   experimental arm     given by risk ratio = 0.500
+Anticipated average odds ratio          0.321
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.200  0.100
+                    2                   0.200  0.100
+                    3                   0.200  0.100
+                    4 most favourable   0.400  0.700
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          123.1
+Sample size per group (calculated)      61.6 61.6
+-------------------------------------------------------------------------
+
+. assert reldif(r(n_ologit_NA),`n1')<1E-6
+
+. 
+. * format of pe
+. artcat, pc(.2 .4 .6) pe(.1 .2 .3) power(.9) probtable cum noround unfavourabl
+> e
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .4 .6 (cumulative)
+                   experimental arm     .1 .2 .3  (cumulative)
+Anticipated average odds ratio          0.321
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.200  0.100
+                    2                   0.200  0.100
+                    3                   0.200  0.100
+                    4 most favourable   0.400  0.700
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          123.1
+Sample size per group (calculated)      61.6 61.6
+-------------------------------------------------------------------------
+
+. assert reldif(r(n_ologit_NA),`n1')<1E-6
+
+. 
+. artcat, pc(.2 .2 .2) pe(.1 .1 .1) power(.9) probtable noround unfavourable
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .2 .2
+                   experimental arm     .1 .1 .1 
+Anticipated average odds ratio          0.321
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.200  0.100
+                    2                   0.200  0.100
+                    3                   0.200  0.100
+                    4 most favourable   0.400  0.700
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          123.1
+Sample size per group (calculated)      61.6 61.6
+-------------------------------------------------------------------------
+
+. assert reldif(r(n_ologit_NA),`n1')<1E-6
+
+. 
+. * extra row
+. artcat, pc(.2 .2 .2 .4) pe(.1 .1 .1 .7) power(.9) probtable noround unfavoura
+> ble
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .2 .2 .4
+                   experimental arm     .1 .1 .1 .7 
+Anticipated average odds ratio          0.321
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.200  0.100
+                    2                   0.200  0.100
+                    3                   0.200  0.100
+                    4 most favourable   0.400  0.700
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          123.1
+Sample size per group (calculated)      61.6 61.6
+-------------------------------------------------------------------------
+
+. assert reldif(r(n_ologit_NA),`n1')<1E-6
+
+. 
+. * extra row and rr
+. artcat, pc(.2 .2 .2 .4) rr(.5) power(.9) probtable noround unfavourable
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .2 .2 .4
+                   experimental arm     given by risk ratio = 0.500
+Anticipated average odds ratio          0.321
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.200  0.100
+                    2                   0.200  0.100
+                    3                   0.200  0.100
+                    4 most favourable   0.400  0.700
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          123.1
+Sample size per group (calculated)      61.6 61.6
+-------------------------------------------------------------------------
+
+. assert reldif(r(n_ologit_NA),`n1')<1E-6
+
+. 
+. * check it also works with type double (this one previously failed)
+. set type double
+
+. artcat, pc(.2 .2 .2 .4) pe(.1 .1 .1 .7) power(.9) probtable noround unfavoura
+> ble
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .2 .2 .4
+                   experimental arm     .1 .1 .1 .7 
+Anticipated average odds ratio          0.321
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.200  0.100
+                    2                   0.200  0.100
+                    3                   0.200  0.100
+                    4 most favourable   0.400  0.700
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          123.1
+Sample size per group (calculated)      61.6 61.6
+-------------------------------------------------------------------------
+
+. assert reldif(r(n_ologit_NA),`n1')<1E-6
+
+. set type float
+
+. 
+. * rr as expression
+. artcat, pc(.2 .4 .6) rr(1/2) power(.9) probtable cum noround unfavourable
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .4 .6 (cumulative)
+                   experimental arm     given by risk ratio = 0.500
+Anticipated average odds ratio          0.321
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.200  0.100
+                    2                   0.200  0.100
+                    3                   0.200  0.100
+                    4 most favourable   0.400  0.700
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          123.1
+Sample size per group (calculated)      61.6 61.6
+-------------------------------------------------------------------------
+
+. assert reldif(r(n_ologit_NA),`n1')<1E-6
+
+. 
+. * C and E the other way round
+. artcat, pc(.1 .2 .3) rr(2) power(.9) cum noround
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+                                        inferred by the program
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .1 .2 .3 (cumulative)
+                   experimental arm     given by risk ratio = 2.000
+Anticipated average odds ratio          3.120
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.100  0.200
+                    2                   0.100  0.200
+                    3                   0.100  0.200
+                    4 least favourable  0.700  0.400
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          123.1
+Sample size per group (calculated)      61.6 61.6
+-------------------------------------------------------------------------
+
+. assert reldif(r(n_ologit_NA),`n1')<1E-6
+
+. 
+. * n to power to n
+. foreach method in NN NA AA {
+  2.         artcat, pc(.2 .4 .6) rr(.5) n(200) probtable cum ologit(`method') 
+> noround unfavourable
+  3.         local power = r(power)
+  4.         artcat, pc(.2 .4 .6) rr(.5) power(`power') probtable cum ologit(`m
+> ethod') noround unfavourable
+  5.         assert reldif(r(n),200)<1E-6
+  6. }
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .4 .6 (cumulative)
+                   experimental arm     given by risk ratio = 0.500
+Anticipated average odds ratio          0.321
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.200  0.100
+                    2                   0.200  0.100
+                    3                   0.200  0.100
+                    4 most favourable   0.400  0.700
+
+Alpha                                   0.050 (two-sided)
+Total sample size (designed)            200
+Method                                  ologit (variance NN)
+
+Power (calculated)                      0.988
+-------------------------------------------------------------------------
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .4 .6 (cumulative)
+                   experimental arm     given by risk ratio = 0.500
+Anticipated average odds ratio          0.321
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.200  0.100
+                    2                   0.200  0.100
+                    3                   0.200  0.100
+                    4 most favourable   0.400  0.700
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.988
+Method                                  ologit (variance NN)
+
+Total sample size (calculated)          200.0
+Sample size per group (calculated)      100.0 100.0
+-------------------------------------------------------------------------
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .4 .6 (cumulative)
+                   experimental arm     given by risk ratio = 0.500
+Anticipated average odds ratio          0.321
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.200  0.100
+                    2                   0.200  0.100
+                    3                   0.200  0.100
+                    4 most favourable   0.400  0.700
+
+Alpha                                   0.050 (two-sided)
+Total sample size (designed)            200
+Method                                  ologit (variance NA)
+
+Power (calculated)                      0.984
+-------------------------------------------------------------------------
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .4 .6 (cumulative)
+                   experimental arm     given by risk ratio = 0.500
+Anticipated average odds ratio          0.321
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.200  0.100
+                    2                   0.200  0.100
+                    3                   0.200  0.100
+                    4 most favourable   0.400  0.700
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.984
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          200.0
+Sample size per group (calculated)      100.0 100.0
+-------------------------------------------------------------------------
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .4 .6 (cumulative)
+                   experimental arm     given by risk ratio = 0.500
+Anticipated average odds ratio          0.321
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.200  0.100
+                    2                   0.200  0.100
+                    3                   0.200  0.100
+                    4 most favourable   0.400  0.700
+
+Alpha                                   0.050 (two-sided)
+Total sample size (designed)            200
+Method                                  ologit (variance AA)
+
+Power (calculated)                      0.980
+-------------------------------------------------------------------------
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .4 .6 (cumulative)
+                   experimental arm     given by risk ratio = 0.500
+Anticipated average odds ratio          0.321
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.200  0.100
+                    2                   0.200  0.100
+                    3                   0.200  0.100
+                    4 most favourable   0.400  0.700
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.980
+Method                                  ologit (variance AA)
+
+Total sample size (calculated)          200.0
+Sample size per group (calculated)      100.0 100.0
+-------------------------------------------------------------------------
+
+. 
+. * affected by aratio
+. artcat, pc(.2 .4 .6) rr(.5) power(.9) probtable cum aratio(2 1) noround unfav
+> ourable
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    2:1
+Anticipated probabilities, control arm  .2 .4 .6 (cumulative)
+                   experimental arm     given by risk ratio = 0.500
+Anticipated average odds ratio          0.315
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.200  0.100
+                    2                   0.200  0.100
+                    3                   0.200  0.100
+                    4 most favourable   0.400  0.700
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          134.2
+Sample size per group (calculated)      89.5 44.7
+-------------------------------------------------------------------------
+
+. assert r(n_ologit_NA) > `n1'
+
+. 
+. * NI
+. artcat, pc(.2 .4 .6) rr(.5) margin(1) power(.9) probtable cum noround unfavou
+> rable
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .4 .6 (cumulative)
+                   experimental arm     given by risk ratio = 0.500
+Anticipated average odds ratio          0.321
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.200  0.100
+                    2                   0.200  0.100
+                    3                   0.200  0.100
+                    4 most favourable   0.400  0.700
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          123.1
+Sample size per group (calculated)      61.6 61.6
+-------------------------------------------------------------------------
+
+. assert r(n_ologit_NA) == `n1'
+
+. 
+. artcat, pc(.2 .4 .6) rr(.5) margin(1.1) power(.9) probtable cum noround unfav
+> ourable
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           non-inferiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1.100
+Non-inferiority region                  odds ratio < 1.100
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .4 .6 (cumulative)
+                   experimental arm     given by risk ratio = 0.500
+Anticipated average odds ratio          0.321
+
+Table of anticipated probabilities      C      E      E null
+                    1 least favourable  0.200  0.100  0.216
+                    2                   0.200  0.100  0.207
+                    3                   0.200  0.100  0.200
+                    4 most favourable   0.400  0.700  0.377
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          104.9
+Sample size per group (calculated)      52.4 52.4
+-------------------------------------------------------------------------
+
+. assert r(n_ologit_NA) < `n1'
+
+. 
+. * NI defaults to or(1)
+. artcat, pc(.2 .4 .6) rr(1) margin(1.5) power(.9) probtable cum noround unfavo
+> urable
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           non-inferiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1.500
+Non-inferiority region                  odds ratio < 1.500
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .4 .6 (cumulative)
+                   experimental arm     given by risk ratio = 1.000
+Anticipated average odds ratio          1.000
+
+Table of anticipated probabilities      C      E      E null
+                    1 least favourable  0.200  0.200  0.273
+                    2                   0.200  0.200  0.227
+                    3                   0.200  0.200  0.192
+                    4 most favourable   0.400  0.400  0.308
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          846.4
+Sample size per group (calculated)      423.2 423.2
+-------------------------------------------------------------------------
+
+. local nNI = r(n)
+
+. artcat, pc(.2 .4 .6) margin(1.5) power(.9) probtable cum noround unfavourable
+Note: assuming anticipated odds ratio = 1
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           non-inferiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1.500
+Non-inferiority region                  odds ratio < 1.500
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .4 .6 (cumulative)
+                   experimental arm     given by odds ratio = 1.000
+
+Table of anticipated probabilities      C      E      E null
+                    1 least favourable  0.200  0.200  0.273
+                    2                   0.200  0.200  0.227
+                    3                   0.200  0.200  0.192
+                    4 most favourable   0.400  0.400  0.308
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          846.4
+Sample size per group (calculated)      423.2 423.2
+-------------------------------------------------------------------------
+
+. assert reldif(r(n),`nNI')<1E-6
+
+. 
+. * options
+. artcat, pc(.2 .4 .6) rr(.5) power(.9) probformat(%7.3f) format(%10.4f) alpha(
+> 0.025) ///
+>         onesid cum noround unf
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .4 .6 (cumulative)
+                   experimental arm     given by risk ratio =   0.500
+Anticipated average odds ratio            0.321
+
+Table of anticipated probabilities      C        E      
+                    1 least favourable    0.200    0.100
+                    2                     0.200    0.100
+                    3                     0.200    0.100
+                    4 most favourable     0.400    0.700
+
+Alpha                                     0.025 (one-sided)
+Power (designed)                          0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          123.1093
+Sample size per group (calculated)      61.5547 61.5547
+-------------------------------------------------------------------------
+
+. assert r(n_ologit_NA) == `n1'
+
+. 
+. * rounding
+. artcat, pc(.2 .4 .6) rr(.5) power(.9) cum unfavourable
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .4 .6 (cumulative)
+                   experimental arm     given by risk ratio = 0.500
+Anticipated average odds ratio          0.321
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.200  0.100
+                    2                   0.200  0.100
+                    3                   0.200  0.100
+                    4 most favourable   0.400  0.700
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          124
+Sample size per group (calculated)      62 62
+-------------------------------------------------------------------------
+
+. assert r(n_ologit_NA) == ceil(`n1')
+
+. assert r(n_ologit_NA) == ceil(r(n_ologit_NA))
+
+. 
+. * whitehead = NN
+. artcat, pc(.2 .4 .6) or(.5) power(.9) probtable cum noround whitehead unfavou
+> rable
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .4 .6 (cumulative)
+                   experimental arm     given by odds ratio = 0.500
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.200  0.111
+                    2                   0.200  0.139
+                    3                   0.200  0.179
+                    4 most favourable   0.400  0.571
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  Whitehead
+
+Total sample size (calculated)          301.7
+Sample size per group (calculated)      150.8 150.8
+-------------------------------------------------------------------------
+
+. local n2 = r(n)
+
+. artcat, pc(.2 .4 .6) or(.5) power(.9) probtable cum noround ologit(NN) unfavo
+> urable
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .2 .4 .6 (cumulative)
+                   experimental arm     given by odds ratio = 0.500
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.200  0.111
+                    2                   0.200  0.139
+                    3                   0.200  0.179
+                    4 most favourable   0.400  0.571
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NN)
+
+Total sample size (calculated)          301.7
+Sample size per group (calculated)      150.8 150.8
+-------------------------------------------------------------------------
+
+. assert reldif(r(n),`n2')<1E-6
+
+. 
+. 
+. /* SETTING 2 */
+. 
+. * or vs pe
+. artcat, pc(.4) or(2.25) power(.9) probtable cum noround favourable
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .4 (cumulative)
+                   experimental arm     given by odds ratio = 2.250
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.400  0.600
+                    2 least favourable  0.600  0.400
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          259.8
+Sample size per group (calculated)      129.9 129.9
+-------------------------------------------------------------------------
+
+. local n1 = r(n)
+
+. 
+. artcat, pc(.4) pe(.6) power(.9) probtable cum noround fav
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .4 (cumulative)
+                   experimental arm     .6  (cumulative)
+Anticipated average odds ratio          2.250
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.400  0.600
+                    2 least favourable  0.600  0.400
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          259.8
+Sample size per group (calculated)      129.9 129.9
+-------------------------------------------------------------------------
+
+. assert reldif(r(n),`n1')<1E-6
+
+. 
+. artbin, pr(0.4 0.6) power(.9)
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (binary version 2.0 08nov2021)
+------------------------------------------------------------------------------
+A sample size program by Abdel Babiker, Patrick Royston, Friederike Barthel, 
+Ella Marley-Zagar and Ian White
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+------------------------------------------------------------------------------
+Type of trial                          superiority
+Number of groups                       2
+Favourable/unfavourable outcome        favourable
+                                       Inferred by the program
+Allocation ratio                       equal group sizes
+Statistical test assumed               unconditional comparison of 2
+                                        binomial proportions P1 and P2
+                                        using the score test
+Local or distant                       distant
+Continuity correction                  no
+
+Anticipated event probabilities        0.400 , 0.600 
+
+Alpha                                  0.050 (two-sided)
+                                       (taken as .025 one-sided)
+Power (designed)                       0.900
+
+Total sample size (calculated)         260
+
+Sample size per group (calculated)     130 130
+Expected total number of events        130.00   
+------------------------------------------------------------------------------
+
+. local n0 = r(n)
+
+. 
+. artcat, pc(.4) pe(.6) power(.9) probtable ologit favourable
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .4
+                   experimental arm     .6 
+Anticipated average odds ratio          2.250
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.400  0.600
+                    2 least favourable  0.600  0.400
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          260
+Sample size per group (calculated)      130 130
+-------------------------------------------------------------------------
+
+. assert reldif(r(n_ologit_NN),`n0')<0.05
+
+. 
+. /* SETTING 3: FLU-IVIG */
+. 
+. artcat, pc(.018 .036 .156 .141 .39) or(1/1.77) power(.8) probtable ologit unf
+> avourable
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .018 .036 .156 .141 .39
+                   experimental arm     given by odds ratio = 0.565
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.018  0.010
+                    2                   0.036  0.021
+                    3                   0.156  0.099
+                    4                   0.141  0.103
+                    5                   0.390  0.384
+                    6 most favourable   0.259  0.382
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.800
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          322
+Sample size per group (calculated)      161 161
+-------------------------------------------------------------------------
+
+. assert r(n_ologit_NN) == 320
+
+. 
+. * same the other way round, without and with last category
+. artcat, pc(.259 .390 .141 .156 .036) or(1.77) power(.8) probtable ologit fav
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .259 .39 .141 .156 .036
+                   experimental arm     given by odds ratio = 1.770
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.259  0.382
+                    2                   0.390  0.384
+                    3                   0.141  0.103
+                    4                   0.156  0.099
+                    5                   0.036  0.021
+                    6 least favourable  0.018  0.010
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.800
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          322
+Sample size per group (calculated)      161 161
+-------------------------------------------------------------------------
+
+. assert r(n_ologit_NN) == 320
+
+. artcat, pc(.259 .390 .141 .156 .036 .018) or(1.77) power(.8) probtable ologit
+>  favo
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .259 .39 .141 .156 .036 .018
+                   experimental arm     given by odds ratio = 1.770
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.259  0.382
+                    2                   0.390  0.384
+                    3                   0.141  0.103
+                    4                   0.156  0.099
+                    5                   0.036  0.021
+                    6 least favourable  0.018  0.010
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.800
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          322
+Sample size per group (calculated)      161 161
+-------------------------------------------------------------------------
+
+. assert r(n_ologit_NN) == 320
+
+. 
+. * check error message if favourable is wrongly specified
+. cap noi artcat, pc(.018 .036 .156 .141 .39) or(1/1.77) power(.8) probtable ol
+> ogit favourable
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .018 .036 .156 .141 .39
+                   experimental arm     given by odds ratio = 0.565
+artcat: or (.5649718) < margin (1) is incompatible with favourable option
+
+. assert _rc==498
+
+. 
+. * check warning if unfavourable/favourable is not specified
+. artcat, pc(.018 .036 .156 .141 .39) or(1/1.77) power(.8) probtable ologit 
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
+-------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+-------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+                                        inferred by the program
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control arm  .018 .036 .156 .141 .39
+                   experimental arm     given by odds ratio = 0.565
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.018  0.010
+                    2                   0.036  0.021
+                    3                   0.156  0.099
+                    4                   0.141  0.103
+                    5                   0.390  0.384
+                    6 most favourable   0.259  0.382
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.800
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          322
+Sample size per group (calculated)      161 161
+-------------------------------------------------------------------------
+
+. 
+. *** CONCLUSION: ARTCAT PASSED ALL TESTS ***
+. 
+. 
+end of do-file
+
+. log close
+      name:  <unnamed>
+       log:  c:\ado\ian\artcat\package\artcat_test_consistency.log
+  log type:  text
+ closed on:   9 Jun 2022, 15:21:55
+-------------------------------------------------------------------------------

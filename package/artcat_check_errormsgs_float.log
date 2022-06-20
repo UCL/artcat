@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  c:\ado\ian\artcat\package\artcat_check_errormsgs_float.log
   log type:  text
- opened on:   9 Jun 2022, 15:21:37
+ opened on:  20 Jun 2022, 12:45:27
 
 . // Checking error messages for the STATA program artcat
 . // Created by Ella Marley-Zagar, 11 June 2020
@@ -16,7 +16,7 @@
 . 
 . which artcat
 c:\ado\ian\artcat/package\artcat.ado
-*! v1.1 Ian White 1jun2022
+*! v1.1.1 Ian White 20jun2022
 
 . 
 . /*
@@ -110,12 +110,12 @@ r(198);
 . * pc < 1
 . artcat, pc(-0.1) pe(0.2) power(0.90) 
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
--------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1.1 20jun2022)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
--------------------------------------------------------------------------
+----------------------------------------------------------------------------
 artcat: probabilities found in pc are non-positive
 r(498);
 
@@ -125,12 +125,12 @@ r(498);
 . * pc > 1
 . artcat, pc(1.1) pe(0.2) power(0.90) 
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
--------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1.1 20jun2022)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
--------------------------------------------------------------------------
+----------------------------------------------------------------------------
 artcat: probabilities in pc sum to more than 1
 r(498);
 
@@ -154,12 +154,12 @@ r(198);
 . * pe <1
 . artcat, pc(0.1) pe(-0.2) power(0.90) 
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
--------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1.1 20jun2022)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
--------------------------------------------------------------------------
+----------------------------------------------------------------------------
 artcat: probabilities found in pe are non-positive
 r(498);
 
@@ -169,12 +169,12 @@ r(498);
 . * pe >1
 . artcat, pc(0.1) pe(1.2) power(0.90) 
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
--------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1.1 20jun2022)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
--------------------------------------------------------------------------
+----------------------------------------------------------------------------
 artcat: probabilities in pe sum to more than 1
 r(498);
 
@@ -235,12 +235,12 @@ r(198);
 >     
 . artcat, pc(0.1) rr(200) power(0.90)
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
--------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1.1 20jun2022)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
--------------------------------------------------------------------------
+----------------------------------------------------------------------------
 artcat: rr option implies pe sums to more than 1
 r(498);
 
@@ -281,12 +281,12 @@ r(198);
 . * power() AND n() missing
 . artcat, pc(0.1) pe(0.2)  
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
--------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1.1 20jun2022)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
--------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           superiority
 Favourable/unfavourable outcome         favourable
                                         inferred by the program
@@ -307,19 +307,19 @@ Method                                  ologit (variance NA)
 
 Total sample size (calculated)          388
 Sample size per group (calculated)      194 194
--------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . * defaults to power = 0.8 as required
 . 
 . * power()
 . artcat, pc(0.1) pe(0.2) power()
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
--------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1.1 20jun2022)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
--------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           superiority
 Favourable/unfavourable outcome         favourable
                                         inferred by the program
@@ -340,7 +340,7 @@ Method                                  ologit (variance NA)
 
 Total sample size (calculated)          388
 Sample size per group (calculated)      194 194
--------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . * defaults to power = 0.8 as required
 . 
@@ -383,12 +383,12 @@ r(123);
 . * n()
 . artcat, pc(0.1) pe(0.2) n()
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
--------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1.1 20jun2022)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
--------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           superiority
 Favourable/unfavourable outcome         favourable
                                         inferred by the program
@@ -409,7 +409,7 @@ Method                                  ologit (variance NA)
 
 Total sample size (calculated)          388
 Sample size per group (calculated)      194 194
--------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . * deafults to power = 0.8 as required
 . 
@@ -430,12 +430,12 @@ r(198);
 . * n(1000000)
 . artcat, pc(0.1) pe(0.2) n(1000000)
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
--------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1.1 20jun2022)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
--------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           superiority
 Favourable/unfavourable outcome         favourable
                                         inferred by the program
@@ -455,7 +455,7 @@ Total sample size (designed)            1000000
 Method                                  ologit (variance NA)
 
 Power (calculated)                      1.000
--------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . * gives power of 1 as expected
 . 
@@ -633,12 +633,12 @@ r(198);
 . * check get error message is specify unfavourable incorrectly
 . artcat, pc(.1) pe(.2) alpha(0.1) power(.8) probtable ologit(NN) unfav
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
--------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1.1 20jun2022)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
--------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           superiority
 Favourable/unfavourable outcome         unfavourable
 Null hypothesis                         odds ratio = 1
@@ -656,12 +656,12 @@ r(498);
 . * check get error message is specify favourable incorrectly
 . artcat, pc(.4 .2) margin(0.1) or(0.05) power(.8) probtable ologit favourable
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
--------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1.1 20jun2022)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
--------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           non-inferiority
 Favourable/unfavourable outcome         favourable
 Null hypothesis                         odds ratio = 0.100
@@ -679,12 +679,12 @@ r(498);
 . artcat, pc(.6 .4 .2) rr(.5) margin(1.1) power(.9) probtable cum noround favou
 > rable
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
--------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1.1 20jun2022)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
--------------------------------------------------------------------------
+----------------------------------------------------------------------------
 artcat: cumulative probabilities found in pc are non-increasing
 r(498);
 
@@ -695,12 +695,12 @@ r(498);
 . artcat, pc(.6 .4 .2) rr(.5) margin(1.1) power(.9) probtable cum noround unfav
 > ourable
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1 1jun2022)
--------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.1.1 20jun2022)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
--------------------------------------------------------------------------
+----------------------------------------------------------------------------
 artcat: cumulative probabilities found in pc are non-increasing
 r(498);
 
@@ -713,5 +713,5 @@ end of do-file
       name:  <unnamed>
        log:  c:\ado\ian\artcat\package\artcat_check_errormsgs_float.log
   log type:  text
- closed on:   9 Jun 2022, 15:21:39
+ closed on:  20 Jun 2022, 12:45:29
 -------------------------------------------------------------------------------

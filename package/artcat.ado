@@ -87,8 +87,8 @@ syntax, pc(numlist) [CUMulative /// control arm options
 	noPROBTable PROBFormat(string) FORMat(string) noRound noHEADer /// output options
 	debug clear RETVars /// undocumented options
 	]
-local version 1.1
-local date 1jun2022
+local version 1.1.1
+local date 20jun2022
 
 *** PARSE
 if !mi("`or'") {

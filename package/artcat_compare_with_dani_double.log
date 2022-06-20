@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  c:\ado\ian\artcat\package\artcat_compare_with_dani_double.log
   log type:  text
- opened on:  20 Jun 2022, 12:45:38
+ opened on:  20 Jun 2022, 12:51:23
 
 . // Validation code for the STATA program -artcat- (NI trials, sample size) co
 > mpared to R's -dani- (results are on the odds ratio scale)
@@ -273,5 +273,5 @@ end of do-file
       name:  <unnamed>
        log:  c:\ado\ian\artcat\package\artcat_compare_with_dani_double.log
   log type:  text
- closed on:  20 Jun 2022, 12:45:40
+ closed on:  20 Jun 2022, 12:51:27
 -------------------------------------------------------------------------------

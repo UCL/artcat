@@ -1,4 +1,5 @@
-*!version 2.0.0 EMZ    08nov2021
+*!version 2.0.1 EMZ    09june2022 
+* version 2.0.0 EMZ    08nov2021
 * version 1.2.13EMZ    08nov2021
 * version 1.2.12EMZ    04nov2021
 * version 1.2.11EMZ    21oct2021
@@ -30,6 +31,8 @@
 *	History
 	
 /*
+2.0.1   09june2022  Removal of comma in between anticipated probabilities in output table.  Replaced p's with pi's in output table hypothesis test.  	
+					Minor formatting to output table.
 2.0.0   08nov2021   Release
 1.2.13  08nov2021   Minor change to favourable/unfavourable text in output table
 1.2.12  04nov2021   Fixed so that returned results for number of events -r(D)- is unrounded.
@@ -157,7 +160,7 @@ syntax , PR(numlist min=2 >0 <1) [ Margin(numlist max=1) ALpha(real 0.05) ARatio
 	DIstant(numlist max=1) LTFU(numlist max=1 >0 <1)]
 
 
-local version "binary version 2.0 08nov2021"
+local version "binary version 2.0.1 09june2022"
 
 numlist "`pr'"
 local npr: word count `pr'
@@ -436,12 +439,12 @@ if !mi("`unfavourable'") & !mi("`favourable'") {
 			local trialtype "substantial-superiority"
 		}
 		if "`trialoutcome'" == "unfavourable" {
-			local H0 = "H0: p2-p1>= `margin'"
-			local H1 = "H1: p2-p1< `margin'"
+			local H0 = "H0: pi2 - pi1 >= `margin'"
+			local H1 = "H1: pi2 - pi1 < `margin'"
 		}
 		else if "`trialoutcome'" == "favourable" {
-			local H0 = "H0: p2-p1<= `margin'"
-			local H1 = "H1: p2-p1> `margin'"
+			local H0 = "H0: pi2 - pi1 <= `margin'"
+			local H1 = "H1: pi2 - pi1 > `margin'"
 		}
 	}
 	
@@ -483,7 +486,7 @@ if !mi("`unfavourable'") & !mi("`favourable'") {
 *	  local nvm `r(nvm)'
 *	  local method`nvm' "`r(vmethod)'"
 	  local Alpha `r(alpha)'
-	  local tit2 "unconditional comparison of 2 binomial proportions P1 and P2"
+	  local tit2 "unconditional comparison of 2 binomial proportions"
 	  local allocr "`r(allocr)'"
 	  local D `r(Dart)'                                                        
 	  *di `D'
@@ -507,7 +510,7 @@ if !mi("`unfavourable'") & !mi("`favourable'") {
 *	  frac_ddp `w2' 3
       local w2dp : di %-6.3f `w2'
 *	  local w2dp `r(ddp)'
-	  local altp "`w1dp', `w2dp'"
+	  local altp "`w1dp' `w2dp'"
 	  local off 40
       local longstring 38
       local maxwidth 78
@@ -571,7 +574,7 @@ else local sided two
 local Power `power'	/* as supplied */
  
  if "`margin'"!="" & "`margin'"!="0" { 
-	local tit2 "comparison of 2 binomial proportions P1 and P2"
+	local tit2 "comparison of 2 binomial proportions"
 	
 	/* Method of estimating event probabilities for the purpose of estimating
 		the variance of the difference in proportions under the null hypothesis H0 */
@@ -677,7 +680,7 @@ else {                                                                          
 		qui replace `PI'=`1' in `i'
 		if `i'>1 {
 			frac_ddp `1' 3
-			local altp `altp', `r(ddp)'
+			local altp `altp' `r(ddp)'
 		}
 		macro shift
 	}
@@ -1069,7 +1072,7 @@ di as text "Number of groups" _col(`off') as res "`npr'"
 if `ngroups' == 2 {
     di as text "Favourable/unfavourable outcome" _col(`off') as res "`trialoutcome'"
 	if `infer'==1 {
-		di as text _col(`off') "{it:Inferred by the program}"
+		di as res _col(`off') "{it:Inferred by the program}"
 *		di as text _col(`off') "{it:To override use the force option}"
 	}
 }

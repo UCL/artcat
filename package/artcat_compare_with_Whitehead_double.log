@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  c:\ado\ian\artcat\package\artcat_compare_with_Whitehead_double.log
   log type:  text
- opened on:  20 Jun 2022, 12:45:31
+ opened on:  20 Jun 2022, 12:51:11
 
 . // Validation code for the STATA program artcat
 . // Created by Ella Marley-Zagar, 11 June 2020
@@ -238,5 +238,5 @@ end of do-file
       name:  <unnamed>
        log:  c:\ado\ian\artcat\package\artcat_compare_with_Whitehead_double.log
   log type:  text
- closed on:  20 Jun 2022, 12:45:31
+ closed on:  20 Jun 2022, 12:51:12
 -------------------------------------------------------------------------------

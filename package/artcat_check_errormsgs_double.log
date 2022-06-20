@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  c:\ado\ian\artcat\package\artcat_check_errormsgs_double.log
   log type:  text
- opened on:  20 Jun 2022, 12:45:36
+ opened on:  20 Jun 2022, 12:51:20
 
 . // Checking error messages for the STATA program artcat
 . // Created by Ella Marley-Zagar, 11 June 2020
@@ -713,5 +713,5 @@ end of do-file
       name:  <unnamed>
        log:  c:\ado\ian\artcat\package\artcat_check_errormsgs_double.log
   log type:  text
- closed on:  20 Jun 2022, 12:45:38
+ closed on:  20 Jun 2022, 12:51:23
 -------------------------------------------------------------------------------

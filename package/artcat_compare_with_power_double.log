@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  c:\ado\ian\artcat\package\artcat_compare_with_power_double.log
   log type:  text
- opened on:  20 Jun 2022, 12:45:33
+ opened on:  20 Jun 2022, 12:51:16
 
 . // Validation code for the STATA program artcat: testing artcat vs Stata's -p
 > ower-
@@ -664,5 +664,5 @@ end of do-file
       name:  <unnamed>
        log:  c:\ado\ian\artcat\package\artcat_compare_with_power_double.log
   log type:  text
- closed on:  20 Jun 2022, 12:45:36
+ closed on:  20 Jun 2022, 12:51:20
 -------------------------------------------------------------------------------

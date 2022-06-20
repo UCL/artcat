@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  c:\ado\ian\artcat\package\artcat_test_consistency.log
   log type:  text
- opened on:  20 Jun 2022, 12:45:40
+ opened on:  20 Jun 2022, 12:51:27
 
 . do artcat_test_consistency
 
@@ -32,7 +32,7 @@ c:\ado\ian\artcat/package\artcat.ado
 
 -> which artbin, usesysdir
 c:\ado\ian\artcat/moreado\artbin.ado
-*!version 2.0.0 EMZ    08nov2021
+*!version 2.0.1 EMZ    09june2022 
 
 . set type float
 
@@ -964,7 +964,7 @@ Sample size per group (calculated)      129.9 129.9
 . 
 . artbin, pr(0.4 0.6) power(.9)
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (binary version 2.0 08nov2021)
+ART - ANALYSIS OF RESOURCES FOR TRIALS (binary version 2.0.1 09june2022)
 ------------------------------------------------------------------------------
 A sample size program by Abdel Babiker, Patrick Royston, Friederike Barthel, 
 Ella Marley-Zagar and Ian White
@@ -976,12 +976,12 @@ Favourable/unfavourable outcome        favourable
                                        Inferred by the program
 Allocation ratio                       equal group sizes
 Statistical test assumed               unconditional comparison of 2
-                                        binomial proportions P1 and P2
+                                        binomial proportions
                                         using the score test
 Local or distant                       distant
 Continuity correction                  no
 
-Anticipated event probabilities        0.400 , 0.600 
+Anticipated event probabilities        0.400  0.600 
 
 Alpha                                  0.050 (two-sided)
                                        (taken as .025 one-sided)
@@ -1203,5 +1203,5 @@ end of do-file
       name:  <unnamed>
        log:  c:\ado\ian\artcat\package\artcat_test_consistency.log
   log type:  text
- closed on:  20 Jun 2022, 12:45:45
+ closed on:  20 Jun 2022, 12:51:32
 -------------------------------------------------------------------------------

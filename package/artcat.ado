@@ -1,5 +1,7 @@
 /* 
-*! v1.1 Ian White 1jun2022
+*! v1.1.1 Ian White 20jun2022
+	change to v14
+v1.1 Ian White 1jun2022
 	harmonise output with artbin
 v1.0.1 Ian White 17feb2021
 	Correct output formatting if power defaults
@@ -76,7 +78,7 @@ From Ab Babiker's Sample_size.do program for IVIG trial
 */
 
 prog def artcat, rclass
-version 13
+version 14
 syntax, pc(numlist) [CUMulative /// control arm options
 	pe(numlist) or(string) rr(string) /// experimental arm options
 	MARgin(real 1) UNFavourable FAVourable UNFavorable FAVorable /// trial type options

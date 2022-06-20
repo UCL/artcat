@@ -10,6 +10,9 @@ adopath ++ `path'/package
 adopath ++ `path'/moreado
 cd `path'/package
 cap log close
+set more off
+set linesize 79
+version 14
 
 foreach type in float double {
 

@@ -4,6 +4,8 @@ Do-file to run the examples in section 4 of
 by White et al
 */
 
+version 14
+
 // Six-level outcome
 
 artcat, pc(.018 .036 .156 .141 .39) or(1/1.77) unfavourable 

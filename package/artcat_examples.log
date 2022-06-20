@@ -1,14 +1,17 @@
------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
       name:  <unnamed>
        log:  C:\ado\ian\artcat\package\artcat_examples.log
   log type:  text
- opened on:   9 Jun 2022, 15:06:55
+ opened on:  20 Jun 2022, 12:40:05
 
 . /* 
 > Do-file to run the examples in section 4 of 
 > "Sample size calculation for an ordered categorical outcome" 
 > by White et al
 > */
+. 
+. version 14
+
 . 
 . // Six-level outcome
 . 
@@ -267,5 +270,5 @@ end of do-file
       name:  <unnamed>
        log:  C:\ado\ian\artcat\package\artcat_examples.log
   log type:  text
- closed on:   9 Jun 2022, 15:06:56
------------------------------------------------------------------------------------------------------
+ closed on:  20 Jun 2022, 12:40:06
+-------------------------------------------------------------------------------

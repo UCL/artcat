@@ -1,5 +1,8 @@
 /* 
-*! v1.1.1 Ian White 20jun2022
+*! v1.2 Ian White 24jun2022
+	change "arm" to "group"
+	resubmit to SJ
+v1.1.1 Ian White 20jun2022
 	change to v14
 v1.1 Ian White 1jun2022
 	harmonise output with artbin
@@ -79,16 +82,16 @@ From Ab Babiker's Sample_size.do program for IVIG trial
 
 prog def artcat, rclass
 version 14
-syntax, pc(numlist) [CUMulative /// control arm options
-	pe(numlist) or(string) rr(string) /// experimental arm options
+syntax, pc(numlist) [CUMulative /// control group options
+	pe(numlist) or(string) rr(string) /// experimental group options
 	MARgin(real 1) UNFavourable FAVourable UNFavorable FAVorable /// trial type options
 	POwer(numlist max=1) n(numlist max=1) ARatio(numlist min=2 max=2) ALpha(real 0.05) ONESided  /// SS options
 	WHITEhead ologit OLOGIT2(string) OLOGIT3(string) /// method options
 	noPROBTable PROBFormat(string) FORMat(string) noRound noHEADer /// output options
 	debug clear RETVars /// undocumented options
 	]
-local version 1.1.1
-local date 20jun2022
+local version 1.2
+local date 24jun2022
 
 *** PARSE
 if !mi("`or'") {
@@ -387,8 +390,8 @@ else if "`trialtype'"=="ss" {
 
 * other settings
 di as txt `col1' "Allocation ratio C:E" as res `col2' "`aratiolong'"
-di as txt `col1' "Anticipated probabilities, control arm " as res `col2' "`pc'`cumbrackets'"
-di as txt `col1' "                   experimental arm " _c
+di as txt `col1' "Anticipated probabilities, control" as res `col2' "`pc'`cumbrackets'"
+di as txt `col1' "                      experimental" _c
 if !mi("`or'") di as res `col2' "given by odds ratio = " `probformat' `or'
 else if !mi("`rr'") di as res `col2' "given by risk ratio = " `probformat' `rr'
 else di as res `col2' `probformat' "`pe' `cumbrackets'"

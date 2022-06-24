@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 1.0.0 12feb2021}{...}
+{* *! version 1.2 24jun2022}{...}
 {vieweralsosee "" "--"}{...}
 {vieweralsosee "Help artbin (if installed)" "help artbin"}{...}
 {vieweralsosee "Help artsurv (if installed)" "help artsurv"}{...}
@@ -15,7 +15,7 @@
 {title:Title}
 
 {phang}
-{bf:artcat} {hline 2} A Stata program to calculate sample size or power for a 2-arm trial with ordered categorical outcome.
+{bf:artcat} {hline 2} A Stata program to calculate sample size or power for a 2-group trial with ordered categorical outcome.
 
 
 {marker syntax}{...}
@@ -29,19 +29,19 @@
 {synoptset 20 tabbed}{...}
 {synopthdr}
 {synoptline}
-{syntab:Control arm options}
+{syntab:Control group options}
 {synopt:{opt pc(numlist)}} Required. Probabilities in each outcome level; the right-most level may be omitted.{p_end}
 {synopt:{opt cum:ulative}} The probabilities in {opt pc(numlist)} are cumulative probabilities. {p_end}
 {synopt:{opt unf:avourable}} The left-most outcome level represents the least favourable outcome.{p_end}
 {synopt:{opt fav:ourable}} The left-most outcome level represents the most favourable outcome.{p_end}
 
-{syntab:Experimental arm options}
+{syntab:Experimental group options}
 {p 6}{it:One of {opt pe(numlist)}, {opt or(exp)} and {opt rr(exp)} must be specified.}{p_end}
 {synopt:{opt pe(numlist)}} Probabilities in each outcome level, specified as for {opt pc(numlist)}; or cumulative probabilities, if the {opt cumulative} option is used. {p_end}
 {synopt:{opt or(exp)}} Odds ratio at each outcome level. 
-An odds ratio less than one means that the distribution in the experimental arm is shifted towards the right-most level compared with the control arm.{p_end}
+An odds ratio less than one means that the distribution in the experimental group is shifted towards the right-most level compared with the control group.{p_end}
 {synopt:{opt rr(exp)}} Risk ratio at each outcome level except the right-most. 
-A risk ratio less than one means that the experimental arm has lower probability at every level except the right-most level compared with the control arm. {p_end}
+A risk ratio less than one means that the experimental group has lower probability at every level except the right-most level compared with the control group. {p_end}
 
 {syntab:Trial type options}
 {synopt:{opt mar:gin(#)}} Specifies the margin, as an odds ratio, for a non-inferiority or substantial superiority trial. 
@@ -56,7 +56,7 @@ If {opt margin(#)} is not specified, or #=1, then a superiority trial is assumed
 if neither {cmd:power(#)} 
 nor {cmd:n(#)} is specified.{p_end}
 {synopt:{opt n(#)}} Total sample size: power will be computed. {p_end}
-{synopt:{opt ar:atio(# #)}} Allocation ratio: e.g. {opt aratio(1 2)} means 2 participants in the experimental arm for every 1 participant in the control arm. {p_end}
+{synopt:{opt ar:atio(# #)}} Allocation ratio: e.g. {opt aratio(1 2)} means 2 participants in the experimental group for every 1 participant in the control group. {p_end}
 {synopt:{opt al:pha(#)}} Significance level. Default is 0.05.{p_end}
 {synopt:{opt ones:ided}} The level specified by {opt alpha(#)} is the one-sided significance level. Default is two-sided.{p_end}
 
@@ -69,8 +69,8 @@ See {help artcat##methods:Which method?} below.{p_end}
 {synopt:{opt white:head}} Use the {help artcat##Whitehead93:Whitehead method}. This option requires {opt or(exp)} to be specified and is not available with {opt margin(#)}. {p_end}
 
 {syntab:Output options}
-{synopt:{opt noprobt:able}} Do not display table of expected probabilities (probabilities at each level in control and experimental group). {p_end}
-{synopt:{opt probf:ormat(string)}} Format for displaying table of expected probabilities (default is %-5.1f). {p_end}
+{synopt:{opt noprobt:able}} Do not display table of anticipated probabilities (probabilities at each level in control and experimental group). {p_end}
+{synopt:{opt probf:ormat(string)}} Format for displaying table of anticipated probabilities (default is %-5.1f). {p_end}
 {synopt:{opt form:at(string)}} Format for displaying calculated sample sizes (default is %6.1f) or powers (default is %6.3f). {p_end}
 {synopt:{opt nor:ound}} Do not round sample size to next largest integer. {p_end}
 {synopt:{opt nohead:er}} Do not print header describing the program. {p_end}
@@ -81,13 +81,13 @@ See {help artcat##methods:Which method?} below.{p_end}
 {marker description}
 {title:Description}
 
-{pstd}{cmd:artcat} calculates sample size given power, or power given sample size, for a 2-arm randomised controlled trial with an ordered categorical outcome. 
+{pstd}{cmd:artcat} calculates sample size given power, or power given sample size, for a 2-group randomised controlled trial with an ordered categorical outcome. 
 Superiority, non-inferiority and substantial-superiority (also called super-superiority) trial types are all supported.
 
 {pstd}We assume the trial will be analysed under the proportional odds model, and treatment effects are expressed on the odds ratio scale. 
 However, the proportional odds model does not have to be true.
-The expected treatment effect may instead be expressed as a common risk ratio or by specifying the outcome distribution.
-In these cases, an odds ratio is fitted to the expected data and referred to as the average odds ratio.
+The anticipated treatment effect may instead be expressed as a common risk ratio or by specifying the outcome distribution.
+In these cases, an odds ratio is fitted to the anticipated data and referred to as the average odds ratio.
 
 {pstd}More details are given in {help artcat##White++:our paper}.
 
@@ -96,9 +96,9 @@ In these cases, an odds ratio is fitted to the expected data and referred to as 
 {marker methods}
 {title:Which method?}
 
-{pstd}All the methods are similar for moderate expected treatment effects - for example, for odds ratios between 0.7 and 1.4.
+{pstd}All the methods are similar for moderate anticipated treatment effects - for example, for odds ratios between 0.7 and 1.4.
 
-{pstd}With large expected treatment effects, our simulations show that the default method, {cmd:ologit(NA)}, is the most reliable.
+{pstd}With large anticipated treatment effects, our simulations show that the default method, {cmd:ologit(NA)}, is the most reliable.
 The Whitehead method, which gives exactly the same results as {cmd:ologit(NN)}, 
 tends to underestimate sample size and overestimate power.
 Conversely, {cmd:ologit(AA)} tends to overestimate sample size and underestimate power.
@@ -135,7 +135,7 @@ The calculation ignores confounding: it may be reasonable in the presence of mod
 {title:Examples}
 
 {pstd}We reproduce the sample size calculation for the FLU-IVIG trial ({help artcat##Davey++19:Davey et al 2019}). 
-The control arm was expected to have a 1.8% probability of the least favourable outcome (death), 
+The control group was anticipated to have a 1.8% probability of the least favourable outcome (death), 
 a 3.6% probability of the next least favourable outcome (admission to an intensive care unit), 
 and so on up to 25.9% probability of the most favourable outcome (discharged with full resumption of normal activities). 
 The trial was designed to have 80% power if the treatment achieves an odds ratio of 1.77 for a favourable outcome. 
@@ -148,7 +148,7 @@ The trial was designed to have 80% power if the treatment achieves an odds ratio
 
 {pin}{stata artcat, pc(.259 .390 .141 .156 .036 .018) or(1.77) power(.8) favourable}
 
-{pstd}Note that the tables of expected probabilities from these two commands are the same (but inverted).
+{pstd}Note that the tables of anticipated probabilities from these two commands are the same (but inverted).
 
 {pstd}We don't need to specify favourable or unfavourable, as the program can infer this, but note the warning message printed:
 
@@ -163,7 +163,7 @@ We next check that the power is very close to 80% if we recruit the required 322
 
 {pin}{stata artcat, pc(.018 .036 .156 .141 .390) or(1/1.77) power(.8) whitehead unfavourable}
 
-{pstd}We design a subsequent non-inferiority trial, using the above treatment (assumed successful with OR=1/1.77 as expected) as the control arm, and setting a margin that retains half the effect (sqrt(1.77)=1.33):
+{pstd}We design a subsequent non-inferiority trial, using the above treatment (assumed successful with OR=1/1.77 as expected) as the control group, and setting a margin that retains half the effect (sqrt(1.77)=1.33):
 
 {pin}{stata artcat, pc(.010 .021 .099 .103 .384) or(1) margin(1.33) power(.8) unfavourable}
 

@@ -9,27 +9,27 @@ f artcat.ado
 f artcat.sthlp
 
 * examples as in SJ article
-artcat_examples.do
-artcat_examples.log
+f artcat_examples.do
+f artcat_examples.log
 
 * main testing file
-artcat_test.do
+f artcat_test.do
 
 * testing files called by artcat_test, and their log files
-artcat_check_errormsgs.do
-artcat_check_errormsgs_double.log
-artcat_check_errormsgs_float.log
-artcat_compare_with_Whitehead.do
-artcat_compare_with_Whitehead_double.log
-artcat_compare_with_Whitehead_float.log
-artcat_compare_with_artbin.do
-artcat_compare_with_artbin_double.log
-artcat_compare_with_artbin_float.log
-artcat_compare_with_dani.do
-artcat_compare_with_dani_double.log
-artcat_compare_with_dani_float.log
-artcat_compare_with_power.do
-artcat_compare_with_power_double.log
-artcat_compare_with_power_float.log
-artcat_test_consistency.do
-artcat_test_consistency.log
+f artcat_check_errormsgs.do
+f artcat_check_errormsgs_double.log
+f artcat_check_errormsgs_float.log
+f artcat_compare_with_Whitehead.do
+f artcat_compare_with_Whitehead_double.log
+f artcat_compare_with_Whitehead_float.log
+f artcat_compare_with_artbin.do
+f artcat_compare_with_artbin_double.log
+f artcat_compare_with_artbin_float.log
+f artcat_compare_with_dani.do
+f artcat_compare_with_dani_double.log
+f artcat_compare_with_dani_float.log
+f artcat_compare_with_power.do
+f artcat_compare_with_power_double.log
+f artcat_compare_with_power_float.log
+f artcat_test_consistency.do
+f artcat_test_consistency.log

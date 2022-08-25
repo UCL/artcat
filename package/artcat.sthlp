@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 1.2 24jun2022}{...}
+{* *! version 1.2.1 25aug2022}{...}
 {vieweralsosee "" "--"}{...}
 {vieweralsosee "Help artbin (if installed)" "help artbin"}{...}
 {vieweralsosee "Help artsurv (if installed)" "help artsurv"}{...}
@@ -32,8 +32,8 @@
 {syntab:Control group options}
 {synopt:{opt pc(numlist)}} Required. Probabilities in each outcome level; the right-most level may be omitted.{p_end}
 {synopt:{opt cum:ulative}} The probabilities in {opt pc(numlist)} are cumulative probabilities. {p_end}
-{synopt:{opt unf:avourable}} The left-most outcome level represents the least favourable outcome.{p_end}
-{synopt:{opt fav:ourable}} The left-most outcome level represents the most favourable outcome.{p_end}
+{synopt:{opt unf:avourable}} The left-most outcome level represents the least favourable outcome. The spelling unfavorable is also allowed.{p_end}
+{synopt:{opt fav:ourable}} The left-most outcome level represents the most favourable outcome. The spelling favorable is also allowed.{p_end}
 
 {syntab:Experimental group options}
 {p 6}{it:One of {opt pe(numlist)}, {opt or(exp)} and {opt rr(exp)} must be specified.}{p_end}

@@ -106,9 +106,6 @@ Conversely, {cmd:ologit(AA)} tends to overestimate sample size and underestimate
 {pstd}The theoretical explanation is that {cmd:ologit(NA)} correctly uses both the null and the alternative variances of the log odds ratio, 
 whereas {cmd:ologit(NN)} uses only the null variance of the log odds ratio (which is smaller)
 and {cmd:ologit(AA)} uses only the alternative variance of the log odds ratio (which is larger).
-The {cmd:ologit(NA)}, {cmd:ologit(NN)} and {cmd:ologit(AA)} methods correspond theoretically to the {cmd:score}, {cmd:local} and {cmd:wald} methods of {help artbin} respectively. 
-However, there is no numerical correspondence - for example, using the {cmd:local} option of {cmd:artbin} tends to overestimate sample size, opposite to using the {cmd:ologit(NN)} option of {cmd:artcat} 
-- and so we have used different option names.
 
 {marker obs}
 {title:artcat for observational studies}

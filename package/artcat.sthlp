@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 1.2.1 25aug2022}{...}
+{* *! version 1.2.2 12sep2022}{...}
 {vieweralsosee "" "--"}{...}
 {vieweralsosee "Help artbin (if installed)" "help artbin"}{...}
 {vieweralsosee "Help artsurv (if installed)" "help artsurv"}{...}

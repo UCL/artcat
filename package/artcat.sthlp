@@ -202,7 +202,8 @@ Whitehead J. Sample size calculations for ordered categorical data. Stat Med 199
 
 {phang}Ian R. White, Ella Marley-Zagar, Tim P Morris, Mahesh K. B. Parmar, Patrick Royston, Abdel G. Babiker.
 Sample size calculation for an ordered categorical outcome.
-Stata Journal, submitted.
+Stata Journal 2023:1;3-23.
+{browse "https://journals.sagepub.com/doi/pdf/10.1177/1536867X231161934"}
 
 {marker updates}
 {title:Author and updates}
@@ -212,7 +213,9 @@ All authors are at the MRC Clinical Trials Unit at UCL, London, UK.
 
 {pstd}Email {browse "mailto:ian.white@ucl.ac.uk":ian.white@ucl.ac.uk}.
 
-{pstd}You can get the latest version of this and my other Stata software using 
+{pstd}You can get the latest version of this software from {browse "https://github.com/UCL/artcat"}.
+
+{pstd}You can browse my other Stata software using 
 {stata "net from http://www.homepages.ucl.ac.uk/~rmjwiww/stata/"}.
 
 

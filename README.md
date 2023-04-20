@@ -17,5 +17,8 @@ To install it from github, use one of these:
 - `github install UCL/artcat, path(package)`
 - `net from https://raw.githubusercontent.com/UCL/artcat/master/package/`
 
-## Preprint
-A paper has been submitted to the Stata Journal, and a preprint is available at https://osf.io/x4chn/
+## Publication
+This work has been published:
+
+Ian R. White, Ella Marley-Zagar, Tim P Morris, Mahesh K. B. Parmar, Patrick Royston, Abdel G. Babiker. Sample size calculation for an ordered categorical outcome. Stata J 2023:1;3-23.
+https://journals.sagepub.com/doi/pdf/10.1177/1536867X231161934

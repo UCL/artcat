@@ -205,6 +205,8 @@ Sample size calculation for an ordered categorical outcome.
 Stata Journal 2023:1;3-23.
 {browse "https://journals.sagepub.com/doi/pdf/10.1177/1536867X231161934"}
 
+{phang}The author (below) would love to hear from you about how you are using the package.
+
 {marker updates}
 {title:Author and updates}
 

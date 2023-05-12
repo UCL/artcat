@@ -5,16 +5,15 @@
 This repository contains the Stata package, plus code for testing and simulation.
  
 ## Directories
-* package - artcat program
-* test - testing programs and output
+* package - artcat program, plus testing programs and output
 * simulation - code for simulation study in Stata Journal paper
 * moreado - ado-files used by test and simulation
 
 ## Installation within Stata
-You should be able to install this package from SSC.
+You should be able to install this package from SSC, using:
+- `ssc install artcat`
 
-To install it from github, use one of these:
-- `github install UCL/artcat, path(package)`
+To install the latest version from github, use:
 - `net from https://raw.githubusercontent.com/UCL/artcat/master/package/`
 
 ## Publication

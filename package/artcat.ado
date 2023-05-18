@@ -1,5 +1,5 @@
 /* 
-*! v1.2.1 Ian White 17may2023
+*! v1.2.1 Ian White 18may2023
 	cope with zero probabilities in pc()
 v1.2 Ian White 24jun2022
 	change "arm" to "group"

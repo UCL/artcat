@@ -89,7 +89,7 @@ However, the proportional odds model does not have to be true.
 The anticipated treatment effect may instead be expressed as a common risk ratio or by specifying the outcome distribution.
 In these cases, an odds ratio is fitted to the anticipated data and referred to as the average odds ratio.
 
-{pstd}More details are given in {help artcat##White++:our paper}.
+{pstd}More details are given in {help artcat##citation:our paper}.
 
 {pstd}{cmd:artcat} is an immediate command: it does not use the data in memory.
 

@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  c:\ado\ian\artcat\package\artcat_compare_with_artbin_float.log
   log type:  text
- opened on:  24 Jun 2022, 10:44:15
+ opened on:  18 May 2023, 08:44:23
 
 . /* 
 > Validation code for the STATA program artcat
@@ -1276,5 +1276,5 @@ end of do-file
       name:  <unnamed>
        log:  c:\ado\ian\artcat\package\artcat_compare_with_artbin_float.log
   log type:  text
- closed on:  24 Jun 2022, 10:44:18
+ closed on:  18 May 2023, 08:44:26
 -------------------------------------------------------------------------------

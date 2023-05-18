@@ -1,7 +1,10 @@
 /*
 Testing script for artcat
 IW
-1jun2022 use new artbin
+18may2023 add test of unnecessary zeroes
+01jun2022 
+	renamed test_consistency
+	use new artbin
 15jul2020 minor updates 
 24nov2020 
 	reflect change of default to ologit 
@@ -11,7 +14,6 @@ IW
 	reflect change to best/worst
 16dec2020
 	reflect change to un/favourable
-1jun2022: renamed test_consistency
 */
 
 
@@ -40,6 +42,10 @@ assert reldif(r(n_ologit_NA),`n1')<1E-6
 
 * extra row
 artcat, pc(.2 .2 .2 .4) pe(.1 .1 .1 .7) power(.9) probtable noround unfavourable
+assert reldif(r(n_ologit_NA),`n1')<1E-6
+
+* with zeroes
+artcat, pc(0 .2 .2 .2 .4 0) pe(0 .1 .1 .1 .7 0) power(.9) probtable noround unfavourable
 assert reldif(r(n_ologit_NA),`n1')<1E-6
 
 * extra row and rr

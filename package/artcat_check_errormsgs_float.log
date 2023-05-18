@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  c:\ado\ian\artcat\package\artcat_check_errormsgs_float.log
   log type:  text
- opened on:  24 Jun 2022, 10:44:20
+ opened on:  18 May 2023, 08:44:29
 
 . // Checking error messages for the STATA program artcat
 . // Created by Ella Marley-Zagar, 11 June 2020
@@ -16,7 +16,7 @@
 . 
 . which artcat
 c:\ado\ian\artcat/package\artcat.ado
-*! v1.2 Ian White 24jun2022
+*! v1.2.1 Ian White 17may2023
 
 . 
 . /*
@@ -116,7 +116,7 @@ A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
 --------------------------------------------------------------------------
-artcat: probabilities found in pc are non-positive
+artcat: negative probabilities found in pc
 r(498);
 
 . * error message as required:  artcat: probabilities found in pc are non-posit
@@ -160,7 +160,7 @@ A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
 --------------------------------------------------------------------------
-artcat: probabilities found in pe are non-positive
+artcat: negative probabilities found in pe
 r(498);
 
 . * error message as required: artcat: probabilities found in pe are non-positi
@@ -685,7 +685,7 @@ A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
 --------------------------------------------------------------------------
-artcat: cumulative probabilities found in pc are non-increasing
+artcat: decreasing cumulative probabilities found in pc
 r(498);
 
 . * Error message: artcat: cumulative probabilities found in pc are non-increas
@@ -701,7 +701,7 @@ A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
 --------------------------------------------------------------------------
-artcat: cumulative probabilities found in pc are non-increasing
+artcat: decreasing cumulative probabilities found in pc
 r(498);
 
 . * Error message: artcat: cumulative probabilities found in pc are non-increas
@@ -713,5 +713,5 @@ end of do-file
       name:  <unnamed>
        log:  c:\ado\ian\artcat\package\artcat_check_errormsgs_float.log
   log type:  text
- closed on:  24 Jun 2022, 10:44:22
+ closed on:  18 May 2023, 08:44:31
 -------------------------------------------------------------------------------

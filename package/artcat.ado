@@ -1,5 +1,7 @@
 /* 
-*! v1.2 Ian White 24jun2022
+*! v1.2.1 Ian White 17may2023
+	cope with zero probabilities in pc()
+v1.2 Ian White 24jun2022
 	change "arm" to "group"
 	resubmit to SJ
 v1.1.1 Ian White 20jun2022
@@ -249,14 +251,20 @@ else { // add row to make probabilities sum to 1
 * to display pe null
 gen p3sum = `margin'*p1sum / (1-p1sum+`margin'*p1sum)
 	
-local levels =_N
-gen int level = _n
-label val level level
 forvalues r=1/3 {
 	gen p`r' = p`r'sum - cond(_n>1,p`r'sum[_n-1],0)
 }
 drop p1sum p2sum p3sum
 * we now have variables: level p1 p2 p3
+
+* new to handle semi-zero counts
+qui count if p1==0 & p2==0
+if r(N) {
+	qui drop if p1==0 & p2==0
+	di as error "Warning: " r(N) " levels dropped due to zero probability in both arms"
+}
+local levels =_N
+gen int level = _n
 
 if mi("`probtable'") { // create matrix of anticipated probabilities
 	if `margin'!=1 local p3 p3
@@ -267,13 +275,13 @@ drop p3
 
 cap assert p1>=0
 if _rc {
-	if mi("`cumulative'") exit498 probabilities found in pc are non-positive 
-	else exit498 cumulative probabilities found in pc are non-increasing 
+	if mi("`cumulative'") exit498 negative probabilities found in pc
+	else exit498 decreasing cumulative probabilities found in pc
 }
 cap assert p2>=0
 if _rc {
-	if mi("`cumulative'") exit498 probabilities found in pe are non-positive 
-	else exit498 cumulative probabilities found in pe are non-increasing 
+	if mi("`cumulative'") exit498 negative probabilities found in pe
+	else exit498 decreasing cumulative probabilities found in pe
 }
 
 gen pbar=(`A'*p1+p2)/(`A'+1)

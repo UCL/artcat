@@ -2,14 +2,17 @@
       name:  <unnamed>
        log:  c:\ado\ian\artcat\package\artcat_test_consistency.log
   log type:  text
- opened on:  24 Jun 2022, 10:44:32
+ opened on:  18 May 2023, 08:44:46
 
 . do artcat_test_consistency
 
 . /*
 > Testing script for artcat
 > IW
-> 1jun2022 use new artbin
+> 18may2023 add test of unnecessary zeroes
+> 01jun2022 
+>         renamed test_consistency
+>         use new artbin
 > 15jul2020 minor updates 
 > 24nov2020 
 >         reflect change of default to ologit 
@@ -19,7 +22,6 @@
 >         reflect change to best/worst
 > 16dec2020
 >         reflect change to un/favourable
-> 1jun2022: renamed test_consistency
 > */
 . 
 . 
@@ -28,7 +30,7 @@
 
 -> which artcat, usesysdir
 c:\ado\ian\artcat/package\artcat.ado
-*! v1.2 Ian White 24jun2022
+*! v1.2.1 Ian White 17may2023
 
 -> which artbin, usesysdir
 c:\ado\ian\artcat/moreado\artbin.ado
@@ -230,6 +232,43 @@ Superiority region                      odds ratio < 1
 Allocation ratio C:E                    1:1
 Anticipated probabilities, control      .2 .2 .2 .4
                       experimental      .1 .1 .1 .7 
+Anticipated average odds ratio          0.321
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.200  0.100
+                    2                   0.200  0.100
+                    3                   0.200  0.100
+                    4 most favourable   0.400  0.700
+
+Alpha                                   0.050 (two-sided)
+Power (designed)                        0.900
+Method                                  ologit (variance NA)
+
+Total sample size (calculated)          123.1
+Sample size per group (calculated)      61.6 61.6
+--------------------------------------------------------------------------
+
+. assert reldif(r(n_ologit_NA),`n1')<1E-6
+
+. 
+. * with zeroes
+. artcat, pc(0 .2 .2 .2 .4 0) pe(0 .1 .1 .1 .7 0) power(.9) probtable noround u
+> nfavourable
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2 24jun2022)
+--------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+--------------------------------------------------------------------------
+Warning: 2 levels dropped due to zero probability in both arms
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control      0 .2 .2 .2 .4 0
+                      experimental      0 .1 .1 .1 .7 0 
 Anticipated average odds ratio          0.321
 
 Table of anticipated probabilities      C      E    
@@ -1203,5 +1242,5 @@ end of do-file
       name:  <unnamed>
        log:  c:\ado\ian\artcat\package\artcat_test_consistency.log
   log type:  text
- closed on:  24 Jun 2022, 10:44:35
+ closed on:  18 May 2023, 08:44:51
 -------------------------------------------------------------------------------

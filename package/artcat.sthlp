@@ -216,7 +216,9 @@ All authors are at the MRC Clinical Trials Unit at UCL, London, UK.
 
 {pstd}Email {browse "mailto:ian.white@ucl.ac.uk":ian.white@ucl.ac.uk}.
 
-{pstd}You can get the latest version of this software from {browse "https://github.com/UCL/artcat"}.
+{pstd}You can get the latest version of this software from {browse "https://github.com/UCL/artcat"}
+or within Stata by running 
+{stata "net from https://raw.githubusercontent.com/UCL/artcat/master/package/"}.
 
 {pstd}You can browse my other Stata software using 
 {stata "net from http://www.homepages.ucl.ac.uk/~rmjwiww/stata/"}.

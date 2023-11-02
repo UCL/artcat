@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  c:\ado\ian\artcat\package\artcat_compare_with_dani_double.log
+       log:  c:\ian\git\artcat\package\artcat_compare_with_dani_double.log
   log type:  text
- opened on:  18 May 2023, 08:44:43
+ opened on:   2 Nov 2023, 17:03:36
 
 . // Validation code for the STATA program -artcat- (NI trials, sample size) co
 > mpared to R's -dani- (results are on the odds ratio scale)
@@ -20,8 +20,8 @@
 
 . 
 . which artcat
-c:\ado\ian\artcat/package\artcat.ado
-*! v1.2.1 Ian White 17may2023
+c:\ian\git\artcat/package\artcat.ado
+*! v1.2.1 Ian White 18may2023
 
 . 
 . 
@@ -32,12 +32,12 @@ c:\ado\ian\artcat/package\artcat.ado
 . artcat, pc(0.01) or(1) margin(1.33) alpha(0.05) power(.8) ologit(AA) noprobta
 > ble unfav
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2 24jun2022)
---------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           non-inferiority
 Favourable/unfavourable outcome         unfavourable
 Null hypothesis                         odds ratio = 1.330
@@ -52,7 +52,7 @@ Method                                  ologit (variance AA)
 
 Total sample size (calculated)          38994
 Sample size per group (calculated)      19497 19497
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . * gives 2n sample size:  38994
 . 
@@ -83,12 +83,12 @@ Sample size per group (calculated)      19497 19497
 . artcat, pc(0.1) or(1) margin(2) alpha(0.1) power(.9) ologit(AA) noprobtable u
 > nfav
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2 24jun2022)
---------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           non-inferiority
 Favourable/unfavourable outcome         unfavourable
 Null hypothesis                         odds ratio = 2.000
@@ -103,7 +103,7 @@ Method                                  ologit (variance AA)
 
 Total sample size (calculated)          794
 Sample size per group (calculated)      397 397
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . * gives 2n sample size:  794
 . 
@@ -130,12 +130,12 @@ Sample size per group (calculated)      397 397
 . artcat, pc(0.05) or(1) margin(0.5) alpha(0.05) power(.9) ologit(AA) noprobtab
 > le fav
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2 24jun2022)
---------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           non-inferiority
 Favourable/unfavourable outcome         favourable
 Null hypothesis                         odds ratio = 0.500
@@ -150,7 +150,7 @@ Method                                  ologit (variance AA)
 
 Total sample size (calculated)          1842
 Sample size per group (calculated)      921 921
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . * gives 2n sample size: 1842
 . 
@@ -178,12 +178,12 @@ Sample size per group (calculated)      921 921
 . artcat, pc(0.04) or(1) margin(1.5) alpha(0.05) power(.8) ologit(AA) noprobtab
 > le unfav
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2 24jun2022)
---------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           non-inferiority
 Favourable/unfavourable outcome         unfavourable
 Null hypothesis                         odds ratio = 1.500
@@ -198,7 +198,7 @@ Method                                  ologit (variance AA)
 
 Total sample size (calculated)          4974
 Sample size per group (calculated)      2487 2487
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . * gives 2n sample size: 4974
 . 
@@ -226,12 +226,12 @@ Sample size per group (calculated)      2487 2487
 . artcat, pc(0.8) or(1) margin(0.05) alpha(0.05) power(.95) ologit(AA) noprobta
 > ble fav
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2 24jun2022)
---------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           non-inferiority
 Favourable/unfavourable outcome         favourable
 Null hypothesis                         odds ratio = 0.050
@@ -246,7 +246,7 @@ Method                                  ologit (variance AA)
 
 Total sample size (calculated)          38
 Sample size per group (calculated)      19 19
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . * gives 2n sample size: 38
 . 
@@ -271,7 +271,7 @@ Sample size per group (calculated)      19 19
 . 
 end of do-file
       name:  <unnamed>
-       log:  c:\ado\ian\artcat\package\artcat_compare_with_dani_double.log
+       log:  c:\ian\git\artcat\package\artcat_compare_with_dani_double.log
   log type:  text
- closed on:  18 May 2023, 08:44:46
+ closed on:   2 Nov 2023, 17:03:39
 -------------------------------------------------------------------------------

@@ -10,11 +10,14 @@ This repository contains the Stata package, plus code for testing and simulation
 * moreado - ado-files used by test and simulation
 
 ## Installation within Stata
-You should be able to install this package from SSC, using:
+You can install this package as published in the Stata Journal, using:
+- `net install st0700, from(http://www.stata-journal.com/software/sj23-1)`
+
+You install a later version of this package from SSC, using:
 - `ssc install artcat`
 
 To install the latest version from github, use:
-- `net from https://raw.githubusercontent.com/UCL/artcat/master/package/`
+- `net install artcat, from(https://raw.githubusercontent.com/UCL/artcat/master/package/)`
 
 ## Publication
 This work has been published:

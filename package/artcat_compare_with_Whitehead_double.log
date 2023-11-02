@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  c:\ado\ian\artcat\package\artcat_compare_with_Whitehead_double.log
+       log:  c:\ian\git\artcat\package\artcat_compare_with_Whitehead_double.log
   log type:  text
- opened on:  18 May 2023, 08:44:32
+ opened on:   2 Nov 2023, 17:03:24
 
 . // Validation code for the STATA program artcat
 . // Created by Ella Marley-Zagar, 11 June 2020
@@ -16,20 +16,20 @@
 
 . 
 . which artcat
-c:\ado\ian\artcat/package\artcat.ado
-*! v1.2.1 Ian White 17may2023
+c:\ian\git\artcat/package\artcat.ado
+*! v1.2.1 Ian White 18may2023
 
 . 
 . 
 . * Example 1 Whitehead Paper (listed under example 2 pg 2266)
 . artcat, pc(0.2 0.5 0.2 0.1) or(exp(0.887)) power(.9) whitehead noround
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2 24jun2022)
---------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           superiority
 Favourable/unfavourable outcome         favourable
                                         inferred by the program
@@ -52,7 +52,7 @@ Method                                  Whitehead
 
 Total sample size (calculated)          187.0
 Sample size per group (calculated)      93.5 93.5
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . local samplesizewex1 = ceil(r(n))
 
@@ -67,12 +67,12 @@ Sample size per group (calculated)      93.5 93.5
 . * Example 2 Whitehead Paper (pg 2266)
 . artcat, pc(0.26 0.38 0.24 0.12) or(exp(0.678)) power(.9) whitehead noround
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2 24jun2022)
---------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           superiority
 Favourable/unfavourable outcome         favourable
                                         inferred by the program
@@ -94,7 +94,7 @@ Method                                  Whitehead
 
 Total sample size (calculated)          304.3
 Sample size per group (calculated)      152.1 152.1
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . local samplesizewex2 = ceil(r(n))
 
@@ -110,12 +110,12 @@ Sample size per group (calculated)      152.1 152.1
 > 4
 . artcat, pc(0.5) or(exp(0.847)) power(.9) whitehead noround
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2 24jun2022)
---------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           superiority
 Favourable/unfavourable outcome         favourable
                                         inferred by the program
@@ -135,7 +135,7 @@ Method                                  Whitehead
 
 Total sample size (calculated)          244.1
 Sample size per group (calculated)      122.0 122.0
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . local samplesizewex3a = ceil(r(n))
 
@@ -150,12 +150,12 @@ Sample size per group (calculated)      122.0 122.0
 . * Example 3b Whitehead Paper pg 2267   
 . artcat, pc(0.2 0.3 0.3 0.2) or(exp(0.847)) power(.9) whitehead noround
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2 24jun2022)
---------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           superiority
 Favourable/unfavourable outcome         favourable
                                         inferred by the program
@@ -177,7 +177,7 @@ Method                                  Whitehead
 
 Total sample size (calculated)          189.7
 Sample size per group (calculated)      94.9 94.9
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . local samplesizewex3b = ceil(r(n))
 
@@ -192,12 +192,12 @@ Sample size per group (calculated)      94.9 94.9
 . * Example 3c Whitehead Paper pg 2268  
 . artcat, pc(0.22 0.28 0.28 0.22) or(exp(0.769)) power(.9) whitehead noround
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2 24jun2022)
---------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           superiority
 Favourable/unfavourable outcome         favourable
                                         inferred by the program
@@ -219,7 +219,7 @@ Method                                  Whitehead
 
 Total sample size (calculated)          229.4
 Sample size per group (calculated)      114.7 114.7
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . local samplesizewex3c = ceil(r(n))
 
@@ -236,7 +236,7 @@ Sample size per group (calculated)      114.7 114.7
 . 
 end of do-file
       name:  <unnamed>
-       log:  c:\ado\ian\artcat\package\artcat_compare_with_Whitehead_double.log
+       log:  c:\ian\git\artcat\package\artcat_compare_with_Whitehead_double.log
   log type:  text
- closed on:  18 May 2023, 08:44:33
+ closed on:   2 Nov 2023, 17:03:24
 -------------------------------------------------------------------------------

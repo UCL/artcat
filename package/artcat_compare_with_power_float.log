@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  c:\ado\ian\artcat\package\artcat_compare_with_power_float.log
+       log:  c:\ian\git\artcat\package\artcat_compare_with_power_float.log
   log type:  text
- opened on:  18 May 2023, 08:44:26
+ opened on:   2 Nov 2023, 17:03:12
 
 . // Validation code for the STATA program artcat: testing artcat vs Stata's -p
 > ower-
@@ -18,8 +18,8 @@
 
 . 
 . which artcat
-c:\ado\ian\artcat/package\artcat.ado
-*! v1.2.1 Ian White 17may2023
+c:\ian\git\artcat/package\artcat.ado
+*! v1.2.1 Ian White 18may2023
 
 . 
 . 
@@ -30,12 +30,12 @@ c:\ado\ian\artcat/package\artcat.ado
 . 
 . artcat, pc(0.2) pe(0.5) power(.9) fav // 103
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2 24jun2022)
---------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           superiority
 Favourable/unfavourable outcome         favourable
 Null hypothesis                         odds ratio = 1
@@ -55,7 +55,7 @@ Method                                  ologit (variance NA)
 
 Total sample size (calculated)          104
 Sample size per group (calculated)      52 52
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . local n1artcat = r(n)
 
@@ -93,12 +93,12 @@ Estimated sample sizes:
 . 
 . artcat, pc(0.24) pe(0.38) power(.8) fav // 338
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2 24jun2022)
---------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           superiority
 Favourable/unfavourable outcome         favourable
 Null hypothesis                         odds ratio = 1
@@ -118,7 +118,7 @@ Method                                  ologit (variance NA)
 
 Total sample size (calculated)          338
 Sample size per group (calculated)      169 169
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . local n2artcat = r(n)
 
@@ -155,12 +155,12 @@ Estimated sample sizes:
 . 
 . artcat, pc(0.05) pe(0.07) alpha(0.1) power(.8) fav // 3458
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2 24jun2022)
---------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           superiority
 Favourable/unfavourable outcome         favourable
 Null hypothesis                         odds ratio = 1
@@ -180,7 +180,7 @@ Method                                  ologit (variance NA)
 
 Total sample size (calculated)          3458
 Sample size per group (calculated)      1729 1729
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . local n3artcat = r(n)
 
@@ -220,12 +220,12 @@ r(9);
 . 
 . artcat, pc(0.5) pe(0.8) alpha(0.05) power(.75) fav // 67
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2 24jun2022)
---------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           superiority
 Favourable/unfavourable outcome         favourable
 Null hypothesis                         odds ratio = 1
@@ -245,7 +245,7 @@ Method                                  ologit (variance NA)
 
 Total sample size (calculated)          68
 Sample size per group (calculated)      34 34
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . local n4artcat = r(n)
 
@@ -282,12 +282,12 @@ Estimated sample sizes:
 . 
 . artcat, pc(0.01) pe(0.03) alpha(0.05) power(.8) fav // 1399
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2 24jun2022)
---------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           superiority
 Favourable/unfavourable outcome         favourable
 Null hypothesis                         odds ratio = 1
@@ -307,7 +307,7 @@ Method                                  ologit (variance NA)
 
 Total sample size (calculated)          1400
 Sample size per group (calculated)      700 700
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . local n5artcat = r(n)
 
@@ -359,12 +359,12 @@ r(198);
 . 
 . artcat, pc(0.04) pe(0.05) alpha(0.05) n(520) fav // 0.081
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2 24jun2022)
---------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           superiority
 Favourable/unfavourable outcome         favourable
 Null hypothesis                         odds ratio = 1
@@ -383,7 +383,7 @@ Total sample size (designed)            520
 Method                                  ologit (variance NA)
 
 Power (calculated)                      0.081
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . local power1artcat = r(power)
 
@@ -420,12 +420,12 @@ Estimated power:
 . 
 . artcat, pc(0.06) pe(0.23) alpha(0.05) n(250) fav // 0.974
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2 24jun2022)
---------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           superiority
 Favourable/unfavourable outcome         favourable
 Null hypothesis                         odds ratio = 1
@@ -444,7 +444,7 @@ Total sample size (designed)            250
 Method                                  ologit (variance NA)
 
 Power (calculated)                      0.974
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . local power2artcat = r(power)
 
@@ -479,12 +479,12 @@ Estimated power:
 . 
 . artcat, pc(0.2) pe(0.3) alpha(0.1) n(380) fav // 0.732
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2 24jun2022)
---------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           superiority
 Favourable/unfavourable outcome         favourable
 Null hypothesis                         odds ratio = 1
@@ -503,7 +503,7 @@ Total sample size (designed)            380
 Method                                  ologit (variance NA)
 
 Power (calculated)                      0.732
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . local power3artcat = r(power)
 
@@ -539,12 +539,12 @@ Estimated power:
 . 
 . artcat, pc(0.01) pe(0.03) alpha(0.05) n(2000) fav // 0.910
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2 24jun2022)
---------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           superiority
 Favourable/unfavourable outcome         favourable
 Null hypothesis                         odds ratio = 1
@@ -563,7 +563,7 @@ Total sample size (designed)            2000
 Method                                  ologit (variance NA)
 
 Power (calculated)                      0.910
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . local power4artcat = r(power)
 
@@ -602,12 +602,12 @@ r(9);
 . 
 . artcat, pc(0.06) pe(0.08) alpha(0.1) n(3030) fav //  0.699
 
-ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2 24jun2022)
---------------------------------------------------------------------------
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
 A sample size program by Ian White with input and support from
 Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
 MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 Type of trial                           superiority
 Favourable/unfavourable outcome         favourable
 Null hypothesis                         odds ratio = 1
@@ -626,7 +626,7 @@ Total sample size (designed)            3030
 Method                                  ologit (variance NA)
 
 Power (calculated)                      0.699
---------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 . local power5artcat = r(power)
 
@@ -662,7 +662,7 @@ Estimated power:
 . 
 end of do-file
       name:  <unnamed>
-       log:  c:\ado\ian\artcat\package\artcat_compare_with_power_float.log
+       log:  c:\ian\git\artcat\package\artcat_compare_with_power_float.log
   log type:  text
- closed on:  18 May 2023, 08:44:29
+ closed on:   2 Nov 2023, 17:03:17
 -------------------------------------------------------------------------------

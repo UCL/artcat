@@ -1,6 +1,8 @@
 /* 
 *! v1.2.1 Ian White 18may2023
 	cope with zero probabilities in pc()
+v1.2 was published in the Stata Journal: 
+	net install st0700, from(http://www.stata-journal.com/software/sj23-1)
 v1.2 Ian White 24jun2022
 	change "arm" to "group"
 	resubmit to SJ
@@ -84,6 +86,16 @@ From Ab Babiker's Sample_size.do program for IVIG trial
 
 prog def artcat, rclass
 version 14
+
+local version 1.2.1
+local date 18may2023
+if _caller() >= 12 {
+    local hidden hidden
+}
+return `hidden' local artcat_version "`version'"
+return `hidden' local artcat_date "`date'"
+if "`0'"=="which" exit
+
 syntax, pc(numlist) [CUMulative /// control group options
 	pe(numlist) or(string) rr(string) /// experimental group options
 	MARgin(real 1) UNFavourable FAVourable UNFavorable FAVorable /// trial type options
@@ -92,8 +104,6 @@ syntax, pc(numlist) [CUMulative /// control group options
 	noPROBTable PROBFormat(string) FORMat(string) noRound noHEADer /// output options
 	debug clear RETVars /// undocumented options
 	]
-local version 1.2
-local date 24jun2022
 
 *** PARSE
 if !mi("`or'") {

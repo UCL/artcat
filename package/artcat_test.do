@@ -4,7 +4,7 @@ artcat_test.do
 IRW and EMZ, 1jun2022
 */
 
-local path c:\ado\ian\artcat // CHANGE TO YOUR FILE LOCATION
+local path c:\ian\git\artcat // CHANGE TO YOUR FILE LOCATION
 
 adopath ++ `path'/package
 adopath ++ `path'/moreado

@@ -1,7 +1,8 @@
 v 3
 
-d Ian White's Stata software
+d Stata software from the MRC Clinical Trials Unit at UCL
 
-p artcat: calculate sample size or power for a 2-arm trial with ordered categorical outcome
+p artcat Calculate sample size or power for a 2-arm trial with ordered categorical outcome
 
+l artbin https://raw.githubusercontent.com/UCL/artbin/master/package/ Calculate sample size or power for randomized trials with binary outcomes
 

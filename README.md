@@ -17,7 +17,7 @@ You install a later version of this package from SSC, using:
 - `ssc install artcat`
 
 To install the latest version from github, use:
-- `net install artcat, from(https://raw.githubusercontent.com/UCL/artcat/master/package/)`
+- `net from https://raw.githubusercontent.com/UCL/artcat/main/package/`
 
 ## Publication
 This work has been published:

@@ -1,0 +1,146 @@
+
+. 
+. artcator, pc(.018 .036 .156 .141 .390 .259) n(322) unfav 
+Seeking OR to give power .8 with sample size 322
+Iteration 1: OR = .56801791
+Iteration 2: OR = .56526835
+Iteration 3: OR = .56523132
+Iteration 4: OR = .56523078: stopping
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+----------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio < 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control      .018 .036 .156 .141 .39 .259
+                      experimental      given by odds ratio = 0.565
+
+Table of anticipated probabilities      C      E    
+                    1 least favourable  0.018  0.010
+                    2                   0.036  0.021
+                    3                   0.156  0.099
+                    4                   0.141  0.103
+                    5                   0.390  0.384
+                    6 most favourable   0.259  0.382
+
+Alpha                                   0.050 (two-sided)
+Total sample size (designed)            322
+Method                                  ologit (variance NA)
+
+Power (calculated)                      0.800
+----------------------------------------------------------------------------
+
+. artcator, pc(.018 .036 .156 .141 .390 .259) n(322) fav 
+Seeking OR to give power .8 with sample size 322
+Iteration 1: OR = 1.7581893
+Iteration 2: OR = 1.7558202
+Iteration 3: OR = 1.7558206: stopping
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+----------------------------------------------------------------------------
+Type of trial                           superiority
+Favourable/unfavourable outcome         favourable
+Null hypothesis                         odds ratio = 1
+Superiority region                      odds ratio > 1
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control      .018 .036 .156 .141 .39 .259
+                      experimental      given by odds ratio = 1.756
+
+Table of anticipated probabilities      C      E    
+                    1 most favourable   0.018  0.031
+                    2                   0.036  0.060
+                    3                   0.156  0.227
+                    4                   0.141  0.169
+                    5                   0.390  0.347
+                    6 least favourable  0.259  0.166
+
+Alpha                                   0.050 (two-sided)
+Total sample size (designed)            322
+Method                                  ologit (variance NA)
+
+Power (calculated)                      0.800
+----------------------------------------------------------------------------
+
+. artcator, pc(.018 .036 .156 .141 .390 .259) n(322) margin(1.2) unfav 
+Seeking OR to give power .8 with sample size 322
+Iteration 1: OR = .68214128
+Iteration 2: OR = .67948206
+Iteration 3: OR = .67945257
+Iteration 4: OR = .67945221: stopping
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+----------------------------------------------------------------------------
+Type of trial                           non-inferiority
+Favourable/unfavourable outcome         unfavourable
+Null hypothesis                         odds ratio = 1.200
+Non-inferiority region                  odds ratio < 1.200
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control      .018 .036 .156 .141 .39 .259
+                      experimental      given by odds ratio = 0.679
+
+Table of anticipated probabilities      C      E      E null
+                    1 least favourable  0.018  0.012  0.022
+                    2                   0.036  0.025  0.043
+                    3                   0.156  0.116  0.178
+                    4                   0.141  0.116  0.152
+                    5                   0.390  0.392  0.381
+                    6 most favourable   0.259  0.340  0.226
+
+Alpha                                   0.050 (two-sided)
+Total sample size (designed)            322
+Method                                  ologit (variance NA)
+
+Power (calculated)                      0.800
+----------------------------------------------------------------------------
+
+. artcator, pc(.018 .036 .156 .141 .390 .259) n(322) margin(1.2) fav 
+Seeking OR to give power .8 with sample size 322
+Iteration 1: OR = 2.1089939
+Iteration 2: OR = 2.1081824
+Iteration 3: OR = 2.1081807: stopping
+
+ART - ANALYSIS OF RESOURCES FOR TRIALS (categorical version 1.2.1 18may2023)
+----------------------------------------------------------------------------
+A sample size program by Ian White with input and support from
+Ella Marley-Zagar, Tim Morris, Max Parmar, Patrick Royston and Ab Babiker.
+MRC Clinical Trials Unit at UCL, London WC1V 6LJ, UK.
+----------------------------------------------------------------------------
+Type of trial                           substantial-superiority
+Favourable/unfavourable outcome         favourable
+Null hypothesis                         odds ratio = 1.200
+Substantial-superiority region          odds ratio > 1.200
+Allocation ratio C:E                    1:1
+Anticipated probabilities, control      .018 .036 .156 .141 .39 .259
+                      experimental      given by odds ratio = 2.108
+
+Table of anticipated probabilities      C      E      E null
+                    1 most favourable   0.018  0.037  0.022
+                    2                   0.036  0.070  0.043
+                    3                   0.156  0.252  0.178
+                    4                   0.141  0.174  0.152
+                    5                   0.390  0.325  0.381
+                    6 least favourable  0.259  0.142  0.226
+
+Alpha                                   0.050 (two-sided)
+Total sample size (designed)            322
+Method                                  ologit (variance NA)
+
+Power (calculated)                      0.800
+----------------------------------------------------------------------------
+
+. 
+. log close
